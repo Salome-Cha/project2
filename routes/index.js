@@ -7,22 +7,8 @@ const ServiceType = require('../models/ServiceType');
 
 /* GET home page */
 router.get('/', (req, res, next) => {
-  res.render('index');
+  res.render('main/homepage');
 });
 
-
-router.get('/authors/create', (req, res) => {
-  res.render('author-create');
-});
-
-router.post('/authors/create', async (req, res) =>{
-  try {
-    let { name } = req.body;
-    const authorCreated = await Author.create({name});
-    res.redirect('/books');
-  } catch (error) {
-    res.render(error);
-  }
-})
 
 module.exports = router;
