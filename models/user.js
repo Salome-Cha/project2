@@ -1,14 +1,46 @@
 const mongoose = require('mongoose');
 const {Schema, model} = mongoose;
 
+
+function capitalize(value) {
+  if (typeof value !== 'string') value = '';
+  return value.charAt(0).toUpperCase() + value.substring(1);
+};
+
 const userSchema = new Schema ({
   name: String,
-  username: String,
+  username: {
+      type: String,
+      required: true,
+      unique: true,
+      set: capitalize
+  },
   firstName: String,
-  photo: String,
+  photo: {
+      type: String,
+      default: '#'
+  },
+  email: {
+    type: String,
+    trim: true,
+    required: true,
+    unique: true
+  },
   description: String,
-  password: String,
+  password: {
+    type: String,
+    required: true,
+    unique: true
+  },
   address: String,
+  city: {
+    type: String,
+    required: true
+  },
+  country: {
+    type: String,
+    required: true
+  },
   helper: Boolean,
   needy: Boolean,
   serviceType: {
