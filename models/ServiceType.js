@@ -9,11 +9,11 @@ const serviceTypeSchema = new Schema ({
   },
 
   color: String,
-  
-  // subServices: {
-  //   type: String,
-  //   required: true,
-  //   enum: ['Doctor', 'Nurse', 'Lawyer', 'Restaurant','Grocery Store','Individual','Landlord','test','test','test','test', 'other volunteer']
+
+  subServices: {
+    type: String,
+    required: true,
+    enum: ['Doctor', 'Nurse', 'Lawyer', 'Restaurant','Grocery Store','Individual','Landlord','test','test','test','test', 'other volunteer']
   
 });
 

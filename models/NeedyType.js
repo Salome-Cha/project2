@@ -8,10 +8,10 @@ const needyTypeSchema = new Schema ({
     enum: ['Food', 'Healthcare', 'Hosting', 'Administrative Help']
   },
   color: String,
-  subServices: {
-    type: String,
-    enum: ['Doctor', 'Nurse', 'Lawyer', 'Restaurant','Grocery Store','Individual','Landlord','test','test','test','test', 'other volunteer']
-  }
+  // subServices: {
+  //   type: String,
+  //   enum: ['Doctor', 'Nurse', 'Lawyer', 'Restaurant','Grocery Store','Individual','Landlord','test','test','test','test', 'other volunteer']
+  // }
   
 });
 
