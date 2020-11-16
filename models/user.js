@@ -8,17 +8,17 @@ function capitalize(value) {
 };
 
 const userSchema = new Schema ({
-  name: String,
-  username: {
+  firstName: String,
+  lastName: String,
+  userName: {
       type: String,
       required: true,
       unique: true,
       set: capitalize
   },
-  firstName: String,
   photo: {
       type: String,
-      default: '#'
+      default: ''
   },
   email: {
     type: String,
@@ -33,6 +33,9 @@ const userSchema = new Schema ({
     unique: true
   },
   address: String,
+  postCode: { 
+    type: String,
+  },
   city: {
     type: String,
     required: true

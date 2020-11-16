@@ -1,1 +1,96 @@
+<<<<<<< HEAD
 <h1>test</h1>
+=======
+<h2>Signup</h2>
+
+<form action="/signup" method="POST">
+
+  <label>
+    <input type="checkbox" name="helper">
+  </label>
+
+  <label>
+    <input type="checkbox" name="needy">
+  </label>
+
+  <label>
+    First Name
+    <input type="text" name="firstName" placeholder="Your first name" required>
+  </label>
+
+  <label>
+    Last Name
+    <input type="text" name="lastName" placeholder="Your last name" required>
+  </label>
+
+  <label>
+    Username
+    <input type="text" name="userName" placeholder="Your username" required>
+  </label>
+
+  <label>
+    Email
+    <input type="email" name="email" placeholder="Your email" required>
+  </label>
+
+  
+  <label>
+    Address
+    <input type="text" name="address" placeholder="Your address">
+  </label>
+
+    
+  <label>
+    City
+    <input type="text" name="city" placeholder="Your address">
+  </label>
+
+  <label>
+    PostCode
+    <input type="text" name="postCode" placeholder="Your postcode">
+  </label>
+
+  <label>
+   Password
+    <input type="password" name="password" required>
+  </label>
+
+<h5> You want to provide: </h5>
+  <label>
+  Food  
+    <input type="checkbox" name="food" id="food">
+  </label>
+
+  <label>
+  Healthcare
+    <input type="checkbox" name="healthcare" id="healthcare" >
+  </label>
+
+   <label>
+  Hosting
+    <input type="checkbox" name="hosting" id="hosting" >
+  </label>
+
+  <label>
+  Administrative help
+    <input type="checkbox" name="administrative" id="administrative" >
+  </label>
+
+   <label>
+  Please precise:
+    <select id="subService" name="subServices">
+      <option value="doctor">Doctor</option>
+      <option value="nurse">Nurse</option>
+      <option value="psychologist">Psychologist</option>
+      <option value="restaurants">Restaurants</option>
+    </select>
+  </label>
+
+   <button type="submit"> Sign up  </button>
+
+{{#if errorMessage}}
+<div class="error"> {{errorMessage}}</div>
+{{/if}}
+
+</form>
+>>>>>>> eb128158ad3ca8ed71466abcea41fc12c93f6044
