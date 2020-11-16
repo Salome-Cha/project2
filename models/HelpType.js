@@ -20,4 +20,4 @@ const helpTypeSchema = new Schema ({
 
 
 
-module.exports = model('ServiceType', helpTypeSchema);
+module.exports = model('helpType', helpTypeSchema);
