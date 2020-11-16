@@ -16,6 +16,4 @@ const needTypeSchema = new Schema ({
 });
 
 
-
-
 module.exports = model('NeedType', needTypeSchema);

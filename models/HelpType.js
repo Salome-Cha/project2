@@ -18,6 +18,4 @@ const helpTypeSchema = new Schema ({
 });
 
 
-
-
-module.exports = model('helpType', helpTypeSchema);
+module.exports = model('HelpType', helpTypeSchema);

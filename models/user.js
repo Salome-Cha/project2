@@ -18,7 +18,7 @@ const userSchema = new Schema ({
   },
   photo: {
       type: String,
-      default: ''
+      default: '/images/user-default-pic.png'
   },
   email: {
     type: String,

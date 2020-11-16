@@ -3,17 +3,17 @@
 
 <form action="/signup" method="POST">
 <h5> Do you want to help or to be helped? </h5>
-  <label>
+  <label for="help">
     Provide help
-    <input type="checkbox" name="serviceType" value="Provide help">
+    <input type="checkbox" name="helper" value="Provide help">
   </label>
 
-  <label>
+  <label for="need">
     Be helped
-    <input type="checkbox" name="needyType" value="Be helped">
+    <input type="checkbox" name="needy" value="Be helped">
   </label>
 
-  <label>
+  <label for="name">
     First Name
     <input type="text" name="firstName" placeholder="Your first name" required>
   </label>
@@ -86,17 +86,21 @@
       <option value="nurse">Nurse</option>
       <option value="psychologist">Psychologist</option>
       <option value="restaurants">Restaurant</option>
-       <option value="doctor">Grocery Store</option>
-      <option value="nurse">Individual</option>
-      <option value="psychologist">Landlord</option>
-      <option value="restaurants">Hotel</option>
-       <option value="psychologist">Lawyer</option>
+      <option value="grocery shops">Grocery Store</option>
+      <option value="individual">Individual</option>
+      <option value="lawyer">Landlord</option>
+      <option value="advisor">Hotel</option>
+      <option value="other">Lawyer</option>
+      <option value="landlord">Landlord</option>
+      <option value="hotel">Hotel</option>
+      <option value="public entity">Lawyer</option>
 
 
     </select>
   </label>
 
-   <button type="submit"> Sign up  </button>
+   <button type="submit" class="btn btn-primary btn-round submit-button">
+      Sign up <i class="fas fa-heart"></i> </button>
 
 {{#if errorMessage}}
 <div class="error"> {{errorMessage}}</div>
