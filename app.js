@@ -46,6 +46,10 @@ app.locals.title = 'Symbiosis';
 
 const index = require('./routes/index');
 app.use('/', index);
+const signup = require('./routes/authRoute');
+app.use('/', signup);
+const mapRoute = require('./routes/mapRoute');
+app.use('/', mapRoute);
 
 
 module.exports = app;
