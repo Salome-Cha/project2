@@ -14,7 +14,7 @@ const serviceTypeSchema = new Schema ({
     type: String,
     required: true,
     enum: ['Doctor', 'Nurse', 'Lawyer', 'Restaurant','Grocery Store','Individual','Landlord','test','test','test','test', 'other volunteer']
-  
+  }
 });
 
 
