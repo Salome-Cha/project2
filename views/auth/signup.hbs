@@ -1,13 +1,14 @@
 <h2>Signup</h2>
 
-<form action="/signup" method="POST">
 
+<form action="/signup" method="POST">
+<h5> Do you want to help or to be helped? </h5>
   <label>
-    <input type="checkbox" name="helper">
+    <input type="checkbox" name="helper" value="Provide help">
   </label>
 
   <label>
-    <input type="checkbox" name="needy">
+    <input type="checkbox" name="needy" value="Be helped">
   </label>
 
   <label>
@@ -53,6 +54,9 @@
   </label>
 
 <h5> You want to provide: </h5>
+<h5> You need help for: </h5>
+
+
   <label>
   Food  
     <input type="checkbox" name="food" id="food">
@@ -79,7 +83,14 @@
       <option value="doctor">Doctor</option>
       <option value="nurse">Nurse</option>
       <option value="psychologist">Psychologist</option>
-      <option value="restaurants">Restaurants</option>
+      <option value="restaurants">Restaurant</option>
+       <option value="doctor">Grocery Store</option>
+      <option value="nurse">Individual</option>
+      <option value="psychologist">Landlord</option>
+      <option value="restaurants">Hotel</option>
+       <option value="psychologist">Lawyer</option>
+
+
     </select>
   </label>
 
@@ -90,3 +101,5 @@
 {{/if}}
 
 </form>
+
+'Doctor', 'Nurse', 'Lawyer', 'Restaurant','Grocery Store','Individual','Landlord'
