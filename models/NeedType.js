@@ -18,4 +18,4 @@ const needTypeSchema = new Schema ({
 
 
 
-module.exports = model('NeedyType', needTypeSchema);
+module.exports = model('NeedType', needTypeSchema);
