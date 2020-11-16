@@ -50,6 +50,8 @@ const signup = require('./routes/authRoute');
 app.use('/', signup);
 const mapRoute = require('./routes/mapRoute');
 app.use('/', mapRoute);
+const blog = require('./routes/index');
+app.use('/', blog);
 
 
 module.exports = app;

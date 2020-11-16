@@ -52,7 +52,7 @@ const userSchema = new Schema ({
   },
   inNeedType: {
     type: Schema.Types.ObjectId, //foreign key
-    ref: 'needType' // relates to Author Model
+    ref: 'NeedyType' // relates to Author Model
   },
 
 
