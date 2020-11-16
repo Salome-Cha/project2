@@ -1,8 +1,8 @@
 const express = require('express');
 const router  = express.Router();
 const User = require('../models/User');
-const NeedyType = require('../models/NeedyType');
-const ServiceType = require('../models/ServiceType');
+const NeedType = require('../models/NeedType');
+const HelpType = require('../models/HelpType');
 
 // function requireLogin(req, res, next) {
 //   if (req.session.currentUser) {

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const {Schema, model} = mongoose;
 
-const needyTypeSchema = new Schema ({
+const needTypeSchema = new Schema ({
   name: {
     type: String,
     required: true,
@@ -18,4 +18,4 @@ const needyTypeSchema = new Schema ({
 
 
 
-module.exports = model('NeedyType', needyTypeSchema);
+module.exports = model('NeedyType', needTypeSchema);
