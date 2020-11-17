@@ -53,34 +53,66 @@
         <input type="text" name="postCode" placeholder="Your postcode">
       </label>
 
+     <label>
+        country 
+        <input type="text" name="country" placeholder="Your postcode">
+      </label>
+
       <label>
       Password
         <input type="password" name="password" required>
       </label>
 
-    <h5> You want to provide: </h5>
-    <h5> You need help for: </h5>
 
 
+
+
+<label>   <h5> You want to provide: </h5>
       <label>
       Food  
-        <input type="checkbox" name="food" id="food">
+        <input type="radio" value="food"  name="helpType" id="food">
       </label>
 
       <label>
       Healthcare
-        <input type="checkbox" name="healthcare" id="healthcare" >
+        <input type="radio" value="healthcare" name="helpType" id="healthcare" >
       </label>
 
       <label>
       Hosting
-        <input type="checkbox" name="hosting" id="hosting" >
+        <input type="radio" value="hosting" name="helpType" id="hosting" >
       </label>
 
       <label>
       Administrative help
-        <input type="checkbox" name="administrative" id="administrative" >
+        <input type="radio" value="administrative" name="helpType" id="administrative" >
       </label>
+</label>
+
+
+<label>   <h5> You need help for: </h5>
+      <label>
+      Food  
+        <input type="radio" value="food"  name="needType" id="food">
+      </label>
+
+      <label>
+      Healthcare
+        <input type="radio" value="healthcare" name="needType" id="healthcare" >
+      </label>
+
+      <label>
+      Hosting
+        <input type="radio" value="hosting" name="needType" id="hosting" >
+      </label>
+
+      <label>
+      Administrative help
+        <input type="radio" value="administrative" name="needType" id="administrative" >
+      </label>
+</label>
+
+
 
       <label>
       Please precise:
@@ -95,8 +127,6 @@
           <option value="advisor">Hotel</option>
           <option value="other">Lawyer</option>
           <option value="public entity">Other</option>
-
-
         </select>
       </label>
 
