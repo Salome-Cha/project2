@@ -121,6 +121,11 @@ display: inline-block;
 
 /* NEEDY MAP PAGE*/
 
+#needy-map {
+  height: 400px;
+  width: 100%;
+}
+
 .needy-map-page-bloc{
   display: flex;
   flex-wrap: wrap;
@@ -132,6 +137,11 @@ display: inline-block;
 .helper-map-page-bloc{
   display: flex;
   flex-wrap: wrap;
+}
+
+#helper-map {
+  height: 400px;
+  width: 100%;
 }
 
 
