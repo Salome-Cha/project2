@@ -5,7 +5,7 @@ const helpTypeSchema = new Schema ({
   name: {
     type: String,
     required: true,
-    enum: ['food', 'healthcare', 'hosting', 'administrative help']
+   // enum: ['food', 'healthcare', 'hosting', 'administrative help']
   },
 
   color: String,

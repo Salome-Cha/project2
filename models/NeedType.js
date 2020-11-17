@@ -4,8 +4,8 @@ const {Schema, model} = mongoose;
 const needTypeSchema = new Schema ({
   name: {
     type: String,
-    required: true,
-    enum: ['Food', 'Healthcare', 'Hosting', 'Administrative Help']
+    required: true
+   // enum: ['food', 'healthcare', 'hosting', 'administrative Help']
   },
   color: String,
   // subServices: {

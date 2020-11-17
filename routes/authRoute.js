@@ -13,9 +13,15 @@ router.get('/signup', (req, res) =>{
 
 
 router.post('/signup', (req, res) =>{
-  const {firstName, lastName, userName, email, address, city, postCode, password, country, helper, needy, helpType, needType, subServices} = req.body;
+  let {firstName, lastName, userName, email, address, city, postCode, password, country, userType, needy, helpType, needType, subServices} = req.body;
   let color;
-  if(helper) {
+  console.log('helper', userType);
+  if(userType === 'Provide help') {
+    helper = true,
+    needy = false
+  } 
+
+  if(userType) {
     switch (helpType) {
       case "food": 
        color = "turchese";
@@ -30,19 +36,21 @@ router.post('/signup', (req, res) =>{
        color = "navy";
        break;
     }
-    if(helper === 'Provide help') {
-      helper = true,
-      needy = false
-    }  
+    console.log('helptype', helpType);
     HelpType.create({name: helpType, subServices, color})
     .then((response) => { 
+      console.log('username', userName);
       User.create({firstName, lastName, userName, email, password, address, postCode, city, country, helper, subServices, serviceType: response._id});
     }).then ((response) => {
     console.log("A helper was created")
-    res.redirect('/index')
+    res.redirect('/')
   })
     .catch ((err) => console.log("An error occured while creating a helper:", err))
   } else {
+    if(userType === 'Be helped') {
+      helper = false,
+      needy = true
+    }
       switch (needType) {
         case "food": 
          color = "turchese";
@@ -57,17 +65,14 @@ router.post('/signup', (req, res) =>{
          color = "navy";
          break;
       }
-      if(needy === 'Be helped') {
-        helper = false,
-        needy = true
-      }
+ 
       NeedType.create({name: needType, needy:true, helper:false, color})
       .then((response) => { 
         User.create({firstName, lastName, userName, email, password, address, postCode, city, country, needy, needType: response._id})
       })
       .then ((response) => {
         console.log("A needer was created")
-        res.redirect('/index');
+        res.redirect('/');
       })
       .catch ((err) => console.log("An error occured while creating a needer:", err))
   }  

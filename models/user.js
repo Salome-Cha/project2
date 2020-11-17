@@ -23,14 +23,12 @@ const userSchema = new Schema ({
   email: {
     type: String,
     trim: true,
-    required: true,
-    unique: true
+    required: true
   },
   description: String,
   password: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   address: String,
   postCode: { 
