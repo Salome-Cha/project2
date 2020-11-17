@@ -3,7 +3,7 @@ const router  = express.Router();
 
 
 // GET THE HELPER MAP
-router.get('/helper-map', (req, res) =>{
+router.get('/hmap', (req, res) =>{
 
   const markers = [
     { lat: 38.7129146, lng: -9.1286218 },
@@ -16,7 +16,7 @@ router.get('/helper-map', (req, res) =>{
 
 
 // GET THE NEEDY MAP
-router.get('/needy-map', (req, res) =>{
+router.get('/nmap', (req, res) =>{
 
   const markers = [
     { lat: 38.7129146, lng: -9.1286218 },

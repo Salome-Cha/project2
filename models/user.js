@@ -42,8 +42,10 @@ const userSchema = new Schema ({
     type: String,
     required: true
   },
-  helper: Boolean,
-  needy: Boolean,
+  userType: {
+    type: String,
+    enum: ['helper', 'needy']
+  },
   serviceType: {
     type: Schema.Types.ObjectId, // link to 
     ref: 'serviceType' 
