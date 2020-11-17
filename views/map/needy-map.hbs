@@ -8,11 +8,20 @@
   <div>column with previews</div>
 
   
-  <div style="width:1000px" id="needy-map"></div>
+  <div style="width:1000px" id="needyMap"></div>
 </div>
 
 
 <script>
+//Needy Map Initiation
+let needyMap;
+function initMap() {
+  const lisbon = { lat: 38.7117206, lng: -9.1264315 };
+  needyMap = new google.maps.Map(document.getElementById('needyMap'), {
+    zoom: 17,
+    center: lisbon
+  })
+}
   function showmarkers(markers) {  // markers are comming from route and it is an array
     markers.forEach((marker) =>{
       setMarker(marker)

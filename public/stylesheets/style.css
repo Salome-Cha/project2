@@ -121,7 +121,7 @@ display: inline-block;
 
 /* NEEDY MAP PAGE*/
 
-#needy-map {
+#needyMap {
   height: 400px;
   width: 100%;
 }
@@ -139,7 +139,7 @@ display: inline-block;
   flex-wrap: wrap;
 }
 
-#helper-map {
+#helperMap {
   height: 400px;
   width: 100%;
 }
