@@ -26,11 +26,24 @@ body {
  
 }
 
+.navbar-flex {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100vw;
+  
+}
+
 #nav-element {
   color: white;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   margin-top: 15px;
+}
+
+.segment-nav {
+display: flex;
+flex-wrap: wrap;
 }
 
 .signup-button {
@@ -45,14 +58,8 @@ body {
   margin-top: 14px;
 }
 
-.inline-navbar {
-display: inline-block;
-}
-.nav-item.left {
-  position: relative;
-}
-.nav-item.right {
-  float: inline-end;
+.navbar-flex.container {
+  width: 100vw;
 }
 
 /* HEADER */
@@ -62,29 +69,20 @@ display: inline-block;
   width: 100%;
   margin: 0;
   padding: 0;
-  height: 1200px;
-  width: 1080px;
+ 
 }
 
 .header-visual {
   background-image: url(/images/homepage-main-visual5.png);
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   height: 1000px;
-  width: 100vw;
+  width: 100vw; 
   margin: 0;
   padding: 0;
   display: flex;
   background-size: contains;
 }
-
-
-
-
-
-
-
-
 
 
 /* BUTTONS  */
@@ -146,11 +144,11 @@ display: inline-block;
 
 
 /* REGISTRATION FORMS GENERIC ELEMENTS */
-.registration-form.container{
+.registration-form{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: space-between;
+  justify-content: space-between;
+  align-items: center;
 }
 
 
