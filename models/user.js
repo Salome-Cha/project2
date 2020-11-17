@@ -48,11 +48,11 @@ const userSchema = new Schema ({
   },
   serviceType: {
     type: Schema.Types.ObjectId, // link to 
-    ref: 'serviceType' 
+    ref: 'HelpType' 
   },
-  inNeedType: {
+  needType: {
     type: Schema.Types.ObjectId, //foreign key
-    ref: 'NeedyType' // relates to Author Model
+    ref: 'NeedType' // relates to Author Model
   },
 });
 
