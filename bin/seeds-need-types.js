@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const Book = require('../models/Book.js');
-const { getMaxListeners } = require('../models/NeedType.js');
-const DB_NAME = 'library-project';
+const NeedType = require('../models/NeedType.js');
+
+const DB_NAME = 'project';
 mongoose.connect(`mongodb://localhost/${DB_NAME}`, {
   useCreateIndex: true,
   useNewUrlParser: true,

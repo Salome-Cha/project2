@@ -40,9 +40,7 @@ router.post('/signup', (req, res) =>{
        break;
     }
 
-    //HelpType.findOne({name: userType, subServices})
-
-    HelpType.create({name: userType, subServices, color}) // subst when created
+    HelpType.findOne({$and: [{name: userType}, {subServices: subServices}]})
     .then((response) => { 
       console.log('username', userName);
       User.create({firstName, lastName, userName, email, userType, password: hashPassword, address, postCode, city, country, subServices, serviceType: response._id});
@@ -67,7 +65,7 @@ router.post('/signup', (req, res) =>{
          break;
       }
  
-      NeedType.create({name: userType, subServices, color})
+      NeedType.findOne({$and: [{name: userType}, {subServices: subServices}, {color: color}]})
       .then((response) => { 
         User.create({firstName, lastName, userName, email, password: hashPassword, address, postCode, city, country, userType, needType: response._id})
       })

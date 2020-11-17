@@ -44,12 +44,24 @@
             <li class="nav-item right">
               <a id="nav-element" class="nav-link" href="/blog">Blog</a>
             </li>
+            {{#unless user}}
             <li class="nav-item right">
               <a id="nav-element" class="nav-link" href="/login">Login</a>
             </li>
             <li class="nav-item right">
               <a id="nav-element" class="signup-button" href="/signup"> Signup</a>
             </li>
+            {{else}}
+            {{#compare user.userType "=" 'helper'}}
+            <li class="nav-item right">
+              <a id="nav-element" class="signup-button" href="/h-profile"> My Profile</a>
+            </li>
+            {{else}}
+            <li class="nav-item right">
+              <a id="nav-element" class="signup-button" href="/n-profile"> My Profile</a>
+            </li>
+            {{/compare}}
+             {{/unless}}
       </div>     
         </div>
       </ul>
@@ -76,17 +88,29 @@
               <a id="nav-element" class="nav-link" href="/services"> Services </a>
             </li>
         </div>  
-        <div  class="segment-nav"> 
+  <div  class="segment-nav"> 
             <li class="nav-item right">
               <a id="nav-element" class="nav-link" href="/blog">Blog</a>
             </li>
+            {{#unless user}}
             <li class="nav-item right">
               <a id="nav-element" class="nav-link" href="/login">Login</a>
             </li>
             <li class="nav-item right">
               <a id="nav-element" class="signup-button" href="/signup"> Signup</a>
             </li>
-      </div>     
+            {{else}}
+            {{#compare user.userType "=" 'helper'}}
+            <li class="nav-item right">
+              <a id="nav-element" class="signup-button" href="/h-profile"> My Profile</a>
+            </li>
+            {{else}}
+            <li class="nav-item right">
+              <a id="nav-element" class="signup-button" href="/n-profile"> My Profile</a>
+            </li>
+            {{/compare}}
+             {{/unless}}
+      </div>       
         </div>
       </ul>
     </div>
@@ -99,8 +123,9 @@
 
 
 <!-- INSERTION OF EACH PAGE'S CONTENT-->
+<div>
   {{{body}}}
-
+</div>
 
 
 <!-- WEBSITE FOOTER COMMON TO THE WHOLE WEBSITE-->

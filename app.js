@@ -9,6 +9,7 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 const session      = require('express-session'); 
+const helpers      = require('handlebars-helpers')
 
 
 mongoose
@@ -47,7 +48,7 @@ app.use(
   })
 )
 
-
+hbs.registerHelper(helpers());
 
 // default value for title local
 app.locals.title = 'Symbiosis';
@@ -61,8 +62,12 @@ const signup = require('./routes/authRoute');
 app.use('/', signup);
 const mapRoute = require('./routes/mapRoute');
 app.use('/', mapRoute);
+const accountRoute = require('./routes/accountRoute');
+app.use('/', accountRoute);
 const blog = require('./routes/index');
 app.use('/', blog);
+
+
 
 
 module.exports = app;
