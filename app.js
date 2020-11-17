@@ -40,13 +40,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
-app.use(
-  session({
-    secret: 'my secret',
-    cookie: {maxAge: 60000}, //1min
-    rolling: true //--> makes the session on if you're browsing
-  })
-)
+// app.use(
+//   session({
+//     secret: 'my secret',
+//     cookie: {maxAge: 60000}, //1min
+//     rolling: true //--> makes the session on if you're browsing
+//   })
+// )
 
 hbs.registerHelper(helpers());
 

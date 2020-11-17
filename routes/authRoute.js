@@ -40,15 +40,17 @@ router.post('/signup', (req, res) =>{
        break;
     }
 
-    HelpType.findOne({$and: [{name: userType}, {subServices: subServices}]})
-    .then((response) => { 
-      console.log('username', userName);
-      User.create({firstName, lastName, userName, email, userType, password: hashPassword, address, postCode, city, country, subServices, serviceType: response._id});
-    }).then ((response) => {
-    console.log("A helper was created")
-    res.redirect('/')
-  })
-    .catch ((err) => console.log("An error occured while creating a helper:", err))
+    //HelpType.findOne({name: userType, subServices})
+
+        HelpType.find({name: helpType, subServices: subServices}) // subst when created
+        .then((response) => { 
+          let helpId = response[0]._id;
+          User.create({firstName, lastName, userName, email, userType, password: hashPassword, address, postCode, city, country, serviceType: helpId});
+        }).then ((user) => {
+        console.log("A helper was created")
+        res.redirect('/')
+      })
+        .catch ((err) => console.log("An error occured while creating a helper:", err))
   } else {
       switch (needType) {
         case "food": 
@@ -65,9 +67,10 @@ router.post('/signup', (req, res) =>{
          break;
       }
  
-      NeedType.findOne({$and: [{name: userType}, {subServices: subServices}, {color: color}]})
+      NeedType.find({name: needType })
       .then((response) => { 
-        User.create({firstName, lastName, userName, email, password: hashPassword, address, postCode, city, country, userType, needType: response._id})
+        let needId = response[0]._id
+        User.create({firstName, lastName, userName, email, password: hashPassword, address, postCode, city, country, userType, needType: needId})
       })
       .then ((response) => {
         console.log("A needer was created")
