@@ -1,109 +1,113 @@
 <h2>Signup</h2>
 
-
-<form action="/signup" method="POST">
-<h5> Do you want to help or to be helped? </h5>
-  <label for="help">
-    Provide help
-    <input type="checkbox" name="helper" value="Provide help">
-  </label>
-
-  <label for="need">
-    Be helped
-    <input type="checkbox" name="needy" value="Be helped">
-  </label>
-
-  <label for="name">
-    First Name
-    <input type="text" name="firstName" placeholder="Your first name" required>
-  </label>
-
-  <label>
-    Last Name
-    <input type="text" name="lastName" placeholder="Your last name" required>
-  </label>
-
-  <label>
-    Username
-    <input type="text" name="userName" placeholder="Your username" required>
-  </label>
-
-  <label>
-    Email
-    <input type="email" name="email" placeholder="Your email" required>
-  </label>
-
+<div class="registration-form container">
   
-  <label>
-    Address
-    <input type="text" name="address" placeholder="Your address">
-  </label>
+  <form action="/signup" method="POST">
 
-    
-  <label>
-    City
-    <input type="text" name="city" placeholder="Your address">
-  </label>
+    <h5> Do you want to help or to be helped? </h5>
 
-  <label>
-    PostCode
-    <input type="text" name="postCode" placeholder="Your postcode">
-  </label>
+      <label for="help">
+        Provide help
+        <input type="checkbox" name="helper" value="Provide help">
+      </label>
 
-  <label>
-   Password
-    <input type="password" name="password" required>
-  </label>
+      <label for="need">
+        Be helped
+        <input type="checkbox" name="needy" value="Be helped">
+      </label>
 
-<h5> You want to provide: </h5>
-<h5> You need help for: </h5>
+      <label for="name">
+        First Name
+        <input type="text" name="firstName" placeholder="Your first name" required>
+      </label>
 
+      <label>
+        Last Name
+        <input type="text" name="lastName" placeholder="Your last name" required>
+      </label>
 
-  <label>
-  Food  
-    <input type="checkbox" name="food" id="food">
-  </label>
+      <label>
+        Username
+        <input type="text" name="userName" placeholder="Your username" required>
+      </label>
 
-  <label>
-  Healthcare
-    <input type="checkbox" name="healthcare" id="healthcare" >
-  </label>
+      <label>
+        Email
+        <input type="email" name="email" placeholder="Your email" required>
+      </label>
 
-   <label>
-  Hosting
-    <input type="checkbox" name="hosting" id="hosting" >
-  </label>
+      
+      <label>
+        Address
+        <input type="text" name="address" placeholder="Your address">
+      </label>
 
-  <label>
-  Administrative help
-    <input type="checkbox" name="administrative" id="administrative" >
-  </label>
+        
+      <label>
+        City
+        <input type="text" name="city" placeholder="Your address">
+      </label>
 
-   <label>
-  Please precise:
-    <select id="subService" name="subServices">
-      <option value="doctor">Doctor</option>
-      <option value="nurse">Nurse</option>
-      <option value="psychologist">Psychologist</option>
-      <option value="restaurants">Restaurant</option>
-      <option value="grocery shops">Grocery Store</option>
-      <option value="individual">Individual</option>
-      <option value="lawyer">Landlord</option>
-      <option value="advisor">Hotel</option>
-      <option value="other">Lawyer</option>
-      <option value="landlord">Landlord</option>
-      <option value="hotel">Hotel</option>
-      <option value="public entity">Lawyer</option>
+      <label>
+        PostCode
+        <input type="text" name="postCode" placeholder="Your postcode">
+      </label>
+
+      <label>
+      Password
+        <input type="password" name="password" required>
+      </label>
+
+    <h5> You want to provide: </h5>
+    <h5> You need help for: </h5>
 
 
-    </select>
-  </label>
+      <label>
+      Food  
+        <input type="checkbox" name="food" id="food">
+      </label>
+
+      <label>
+      Healthcare
+        <input type="checkbox" name="healthcare" id="healthcare" >
+      </label>
+
+      <label>
+      Hosting
+        <input type="checkbox" name="hosting" id="hosting" >
+      </label>
+
+      <label>
+      Administrative help
+        <input type="checkbox" name="administrative" id="administrative" >
+      </label>
+
+      <label>
+      Please precise:
+        <select id="subService" name="subServices">
+          <option value="doctor">Doctor</option>
+          <option value="nurse">Nurse</option>
+          <option value="psychologist">Psychologist</option>
+          <option value="restaurants">Restaurant</option>
+          <option value="grocery shops">Grocery Store</option>
+          <option value="individual">Individual</option>
+          <option value="lawyer">Landlord</option>
+          <option value="advisor">Hotel</option>
+          <option value="other">Lawyer</option>
+          <option value="public entity">Other</option>
+
+
+        </select>
+      </label>
 
    <button type="submit" class="btn btn-primary btn-round submit-button">
       Sign up <i class="fas fa-heart"></i> </button>
 
-{{#if errorMessage}}
-<div class="error"> {{errorMessage}}</div>
-{{/if}}
+
+
+    {{#if errorMessage}}
+    <div class="error"> {{errorMessage}}</div>
+    {{/if}}
 
 </form>
+</div>

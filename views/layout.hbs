@@ -7,6 +7,9 @@
   <title>{{title}}</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/4858342c64.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
@@ -15,42 +18,47 @@
 
 <!-- NAVBAR COMMON TO THE WHOLE WEBSITE-->
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<div class="container logo-container">
+<img src="/images/logo-nobackground.png" class="main-logo-nav" alt="logo">
+</div>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+    
+    <div class="inline-navbar">
+      <ul class="navbar-nav mr-auto">
+        <div class="navbar-flex container">
+    
+            <li class="nav-item left active">
+              <a id="nav-element" class="nav-link" link="/">Homepage <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item left">
+              <a id="nav-element" class="nav-link" href="/services"> Services </a>
+            </li>
+            <li class="nav-item right">
+              <a id="nav-element" class="nav-link" href="/blog">Blog</a>
+            </li>
+            <li class="nav-item right">
+              <a id="nav-element" class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item right">
+              <a id="nav-element" class="signup-button" href="/signup"> Signup</a>
+            </li>
+            
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-
-    </form>
+      </ul>
+    </div>
   </div>
 </nav>
+
+
+
+
+
+
+
+
+
 
 
 <!-- INSERTION OF EACH PAGE'S CONTENT-->
@@ -59,7 +67,6 @@
 
 
 <!-- WEBSITE FOOTER COMMON TO THE WHOLE WEBSITE-->
-<!-- Footer -->
 <footer class="page-footer font-small white">
 
   <!-- Footer Links -->
@@ -70,104 +77,83 @@
 
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
-        <h6 class="text-uppercase font-weight-bold">
-          <a href="#!">About us</a>
-        </h6>
+        <p class="text-uppercase">
+          <a href="#!" class="footer-link">About us</a>
+        </p>
       </div>
       <!-- Grid column -->
 
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
-        <h6 class="text-uppercase font-weight-bold">
-          <a href="#!">Services</a>
-        </h6>
+        <p class="text-uppercase">
+          <a href="#!" class="footer-link">Services</a>
+        </p>
       </div>
       <!-- Grid column -->
 
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
-        <h6 class="text-uppercase font-weight-bold">
-          <a href="#!">Blog</a>
-        </h6>
+        <p class="text-uppercase">
+          <a href="#!" class="footer-link">Blog</a>
+        </p>
       </div>
       <!-- Grid column -->
 
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
-        <h6 class="text-uppercase font-weight-bold">
-          <a href="#!">FAQ</a>
-        </h6>
+        <p class="text-uppercase">
+          <a href="#!" class="footer-link">FAQ</a>
+        </p>
       </div>
       <!-- Grid column -->
 
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
-        <h6 class="text-uppercase font-weight-bold">
-          <a href="#!">Contact</a>
-        </h6>
+        <p class="text-uppercase">
+          <a href="#!" class="footer-link">Contact</a>
+        </p>
       </div>
       <!-- Grid column -->
 
     </div>
-    <!-- Grid row-->
-    <hr class="rgba-white-light" style="margin: 0 15%;">
 
-    <!-- Grid row-->
+
     <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
 
-      <!-- Grid column -->
+ 
       <div class="col-md-8 col-12 mt-5">
-        <p style="line-height: 1.7rem">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem
-          aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-          explicabo.
-          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
+        <p style="line-height: 1.7rem"> 
+          Symbiosis was developed with love by Rodigro & Salomé 
+        </p>
       </div>
-      <!-- Grid column -->
-
+   
     </div>
-    <!-- Grid row-->
-    <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
-
-    <!-- Grid row-->
+    
+    
     <div class="row pb-3">
-
-      <!-- Grid column -->
       <div class="col-md-12">
-
-        <div class="mb-5 flex-center">
-
+        <div class="mb-5 icons-social-media flex-center">
           <!-- Facebook -->
           <a class="fb-ic">
-            <i class="fab fa-facebook-f fa-lg white-text mr-4"> </i>
+            <i class="fab social-media-i fa-facebook-f fa-lg white-text mr-4"> </i>
           </a>
           <!--Linkedin -->
           <a class="li-ic">
-            <i class="fab fa-linkedin-in fa-lg white-text mr-4"> </i>
+            <i class="fab social-media-i fa-linkedin-in fa-lg white-text mr-4"> </i>
           </a>
           <!--Instagram-->
           <a class="ins-ic">
-            <i class="fab fa-instagram fa-lg white-text mr-4"> </i>
+            <i class="fab social-media-i fa-instagram fa-lg white-text mr-4"> </i>
           </a>
-         
-
         </div>
-
       </div>
-
-
     </div>
-
 
   </div>
 
-
-
   <div class="footer-copyright text-center py-3">© 2020 Copyright  </div>
-
-
 </footer>
-<!-- Footer -->
+
 
   <script src="/javascripts/script.js"></script>
 </body>

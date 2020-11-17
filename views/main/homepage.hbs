@@ -1,13 +1,10 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<!-- HEADER VISUAL-->
 
-<a href="/services"> Services </a>
+<div class="main-content">
+  <div class="header-visual">
+  </div>
+</div>
 
-<a href="/signup"> Sign-Up </a>
-
-<a href="/login"> Login </a>
-
-<a href="/blog"> Blog </a>
 
 <!-- display welcome user if the user is present: TO BE CHANGED WITH OUR NAMMING FOR USERNAME-->
 
@@ -24,8 +21,4 @@ Welcome, {{user.username}}
 
 <a href="/private"> See your contacts </a>
 
-
-
-{{else}}
-<a href="/login"> Login </a>  <!-- This way, We see login only if we're not connected. -->
 {{/if}}

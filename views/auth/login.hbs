@@ -1,5 +1,6 @@
 <h2>Login</h2>
 
+<div class="registration-form container">
 <form action="/login" method="POST">
   <label>
     Username
@@ -17,6 +18,8 @@
   </label>
 
    <button type="submit"> Log-in  </button>
+</div>
+
 
 {{#if errorMessage}}
 <div class="error"> {{errorMessage}}</div>
