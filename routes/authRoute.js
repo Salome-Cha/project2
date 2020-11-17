@@ -3,6 +3,8 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 const User = require('../models/User');
+const NeedType = require('../models/NeedType');
+const HelpType = require('../models/HelpType');
 
 
 router.get('/signup', (req, res) =>{
@@ -10,9 +12,9 @@ router.get('/signup', (req, res) =>{
 });
 
 
-router.post('/signup', async (req, res) =>{
-const {firstName, lastName, userName, email, address, city, postCode, password, country, helper, needy, helpType, needType, subServices} = req.body;
-let color;
+router.post('/signup', (req, res) =>{
+  const {firstName, lastName, userName, email, address, city, postCode, password, country, helper, needy, helpType, needType, subServices} = req.body;
+  let color;
   if(helper) {
     switch (helpType) {
       case "food": 
@@ -28,10 +30,14 @@ let color;
        color = "navy";
        break;
     }
-    HelpType.create({helpType, subServices, color})
-    .then((res) => { 
-      User.create({firstName, lastName, userName, photo, email, description, password, address, postCode, city, country, helper, subServices, serviceType: res._id});
-    }).then ((res) => {
+    if(helper === 'Provide help') {
+      helper = true,
+      needy = false
+    }  
+    HelpType.create({name: helpType, subServices, color})
+    .then((response) => { 
+      User.create({firstName, lastName, userName, email, password, address, postCode, city, country, helper, subServices, serviceType: response._id});
+    }).then ((response) => {
     console.log("A helper was created")
     res.redirect('/index')
   })
@@ -51,11 +57,15 @@ let color;
          color = "navy";
          break;
       }
-    NeedType.create({needType, color})
-      .then((res) => { 
-        User.create({firstName, lastName, userName, photo, email, description, password, address, postCode, city, country, needy, needType: res._id})
+      if(needy === 'Be helped') {
+        helper = false,
+        needy = true
+      }
+      NeedType.create({name: needType, needy:true, helper:false, color})
+      .then((response) => { 
+        User.create({firstName, lastName, userName, email, password, address, postCode, city, country, needy, needType: response._id})
       })
-      .then ((res) => {
+      .then ((response) => {
         console.log("A needer was created")
         res.redirect('/index');
       })
