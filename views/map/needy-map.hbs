@@ -10,3 +10,71 @@
   
   <div style="width:1000px" id="needy-map"></div>
 </div>
+
+
+<script>
+  function showmarkers(markers) {  // markers are comming from route and it is an array
+    markers.forEach((marker) =>{
+      setMarker(marker)
+    });
+  };
+
+  function setMarker(marker) {
+    new google.maps.Marker({
+      position: marker,
+      map: map
+    });
+  };
+
+  function getCurrentLocation() {
+    navigator.geolocation.getCurrentPosition((position) =>{
+      const pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      }
+      map.setCenter(pos);
+      map.setZoom(13);
+    })
+  }
+
+  function calcRoute() {
+    let directionsService = new google.maps.DirectionsService();
+    let directionsRenderer = new google.maps.DirectionsRenderer();
+
+    let start = "Santa Apolónia, Lisboa";
+    let end = "Rato, Lisboa";
+    let request = {
+      origin: start,
+      destination: end,
+      travelMode: 'DRIVING'
+    };
+    directionsService.route(request, (result, status) =>{
+      if(status === 'OK') {
+        directionsRenderer.setDirections(result);
+      }
+    });
+    directionsRenderer.setMap(map);
+  }
+
+  function searchPlaces() {
+    const heden = {lat: 38.7117206, lng: -9.1264315};
+
+    let request = {
+      location: heden,
+      radius: '50',
+      type: ['Restaurants']
+    };
+    let service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(request, (results, status) =>{
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        for(let i = 0; i < results.length; i++) {
+          let lat = results[i].geometry.location.lat();
+          let lng = results[i].geometry.location.lng();
+          setMarker({lat, lng});
+        }
+      }
+    })
+  }
+
+
+</script>

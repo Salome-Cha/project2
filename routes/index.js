@@ -22,8 +22,7 @@ router.get('/', (req, res, next) => {
 router.get('/services', (req, res) =>{
   res.render('main/offer');
 })
-
-router.get('/blog', (res, render) =>{
+router.get('/blog', (req, res) =>{
   res.render('main/blog');
 })
 
