@@ -13,7 +13,7 @@ const helpTypeSchema = new Schema ({
   subServices: {
     type: String,
     required: true,
-    enum: ['Doctor', 'Nurse', 'psychologist', 'Lawyer', 'Restaurant','Grocery Store','Individual','Landlord','test','test','test','test', 'other volunteer']
+    enum: ['doctor', 'nurse', 'psychologist', 'medical student', 'lawyer', 'public advisor', 'volunteer', 'resident', 'landlord', 'hotel', 'restaurant', 'grocery store','other' ]
   }
 });
 

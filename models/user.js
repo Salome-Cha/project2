@@ -52,9 +52,6 @@ const userSchema = new Schema ({
     type: Schema.Types.ObjectId, //foreign key
     ref: 'NeedyType' // relates to Author Model
   },
-
-
-
 });
 
 

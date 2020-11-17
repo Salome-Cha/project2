@@ -17,7 +17,7 @@ const HelpType = require('../models/HelpType');
 router.get('/', (req, res, next) => {
   // req.app.locals.loggedUser = req.session.currentUser; //--> to show on the views we must set it to req.app.locals ... so it exports..
   let url = req.url;
-  res.render('main/homepage', {url}, /* {user: req.session.currentUser} */);
+  res.render('main/homepage', {url} /* {user: req.session.currentUser} */);
 });
 
 router.get('/services', (req, res) =>{
