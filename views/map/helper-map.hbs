@@ -31,11 +31,11 @@
       </div>
 </div>
 
-<div class="container">
-  <div class="raw global-map-group">
+<div class="container-fluid global-map-group">
+
     <div class="profile-suggestions" >
       <div>
-        Other members nearby:
+        Members nearby:
         <div>
           {{#each needyUsersFromDB}}
           <div class="snippet-preview">
@@ -51,15 +51,14 @@
 
 
 {{!-- The map --}}
+<div style="width:600px" class="helper-map-page-bloc" id="helperMap"></div>
 
-<div class="helper-map-page-bloc"></div>
-</div>
 </div>
 
 
 <input type="hidden" id="userInput" value="{{user}}">
 <input type="hidden" id="allMarkers" value="{{markers}}">
-<div style="width:1000px" id="helperMap"></div>
+
 
 
 
@@ -86,6 +85,8 @@ function initMap() {
     zoom: 17,
     center: {lat: currentUser.geocoding.lat, lng: currentUser.geocoding.lng}
   })
+
+  helperMap.style.position = "static"
 }
 
 

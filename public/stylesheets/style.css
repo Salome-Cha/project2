@@ -206,7 +206,7 @@ width: 200px;
 
 #needyMap {
   height: 400px;
-  width: 100%;
+  width: 800px;
 }
 
 .needy-map-page-bloc{
@@ -214,8 +214,33 @@ width: 200px;
   flex-wrap: wrap;
 }
 
+.map-view {
+  display: flex;
+  flex-direction: column;
+}
+
 
 /* HELPERS MAP PAGE*/
+
+#needyMap {
+  height: 400px;
+  width: 800px;
+}
+
+.needy-map-page-bloc{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.map-view {
+  display: flex;
+  flex-direction: column;
+}
+
+.global-map-group {
+  display: flex;
+  flex-direction: row;
+}
 
 .helper-map-page-bloc{
   display: flex;
@@ -225,6 +250,7 @@ width: 200px;
 
 #helperMap {
   height: 400px;
+
   width: 80vw;
 }
 
@@ -235,15 +261,12 @@ width: 200px;
   font-size: 12px;
 }
 
-.global-map-group {
-  display: flex; 
-  flex-wrap:wrap;
-  flex-direction: raw;
+.profile-suggestions {
+width: 400px;
 }
 
-.profile-suggestions {
-width: 300px;
-}
+
+
 
 /* REGISTRATION FORMS GENERIC ELEMENTS */
 .registration-form{
@@ -266,6 +289,10 @@ width: 300px;
   margin-right: 0;
 }
 
+.alignment-items {
+  display: flex;
+  flex-direction: row;
+}
 .signup-col {
   padding: 0;
   margin-right: 0;
@@ -298,9 +325,11 @@ width: 300px;
   font-size: 12px;
   border: none;
   border-bottom: 0.5px solid rgb(116, 114, 114);
-  margin-right: 30px;
-  margin-left: 20px;
+  margin: 15px 30px 0 20px;
+}
 
+.registration-form placeholder {
+ text-align: center;
 }
 
 .form-typeh4 {
