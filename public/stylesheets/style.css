@@ -4,6 +4,16 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+/*
+.global-body-full-content {
+  margin-top: 71px;
+} */
+
+.global-body-margin-top {
+  margin-top: 76px;
+  margin-left: 0;
+  margin-left: 0;
+}
 
 /* NAV BAR */
 
@@ -16,14 +26,30 @@ body {
 .main-logo-nav {
   width: 200px;
   position: absolute;
-  top: 4%;
+  top: 15%;
+  left: 42%;
 }
 
 .navbar {
   position: absolute;
   top: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding-bottom: 13px;
   margin-bottom: 10px;
- 
+  width: 100vw;
+}
+
+.navbar-flex.container{
+  width: 100vw;
+  margin-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.navbar-nav, .inline-navbar {
+  margin-right: 0;
+  margin-left: 0;
 }
 
 .navbar-flex {
@@ -31,7 +57,6 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100vw;
-  
 }
 
 #nav-element {
@@ -39,6 +64,8 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   margin-top: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .segment-nav {
@@ -84,6 +111,62 @@ flex-wrap: wrap;
   background-size: contains;
 }
 
+/* HOMEPAGE */
+.image-service-homepage{
+  width: 120px;
+}
+
+.snippet-homepage {
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.type-snippet {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: black;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+/* OFFER PAGE */
+
+.main-picture-offer {
+  height: 500px; 
+  margin: 0;
+  padding: 0;
+}
+
+.image-service-type {
+width: 200px;
+}
 
 /* BUTTONS  */
 .submit-button {
@@ -115,6 +198,8 @@ flex-wrap: wrap;
   outline: 1px dotted;
   outline: 5px auto -webkit-focus-ring-color;
 }
+
+
 
 
 /* NEEDY MAP PAGE*/
@@ -151,6 +236,128 @@ flex-wrap: wrap;
   align-items: center;
 }
 
+
+/* SIGNUP FORM*/
+
+.signup-visual {
+  width: 650px;
+  margin-left: 0;
+}
+
+.image-signup-container{
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.signup-col {
+  padding: 0;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.signup-form-container {
+  margin: 0;
+  padding: 0;
+}
+
+.registration-form{
+  color:  rgb(116, 114, 114);
+  font-family:'Roboto', sans-serif;
+}
+
+.registration-form label {
+  font-size: 12px;
+}
+
+.registration-form select {
+  font-size: 12px;
+  border-radius: 30px;
+  width: 150px;
+  color:  rgb(116, 114, 114)
+}
+
+
+.registration-form input {
+  font-size: 12px;
+  border: none;
+  border-bottom: 0.5px solid rgb(116, 114, 114);
+  margin-right: 30px;
+  margin-left: 20px;
+
+}
+
+.form-typeh4 {
+  color: #334B9A;
+  font-family:'Roboto', sans-serif;
+  font-size: 24px;
+  text-align: center;
+  margin: 10px;
+}
+
+.form-typeh5{
+  color:#334B9A;
+  font-family:'Roboto', sans-serif;
+  font-size: 14px;
+  text-align: center;
+}
+
+.signup-radio-button-type {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px;
+}
+
+.form-elements-grouping {
+  display: flex;
+  flex-direction: row;
+}
+
+
+/* SIGNIN */
+
+.signin-button{
+  display: flex;
+  border-radius: 30px;
+  cursor: pointer;
+  color: #fff;
+  background-color: black;
+  border-color: black;
+  box-shadow: 0 2px 2px 0 rgba(24, 23, 24, 0.14), 0 3px 1px -2px rgba(24, 23, 24, 0.2), 0 1px 5px 0 rgba(24, 23, 24, 0.12);
+  padding: 12px 30px;
+  margin: 0.3125rem 1px;
+  font-size: .75rem;
+  font-weight: 400;
+  line-height: 1.428571;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: box-shadow, transform;
+  text-align: center;
+}
+
+.submit-button:hover {
+  background: rgb(17, 4, 87);
+}
+
+
+.submit-button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+.fa-heart{
+  margin-left: 10px;
+}
+
+.signin-form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 650px;
+}
 
 /*FOOTER */
 .page-footer {

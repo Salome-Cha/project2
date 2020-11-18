@@ -1,23 +1,39 @@
-<h2>Login</h2>
+<div class="global-body-margin-top">
 
-<div class="registration-form container">
-<form action="/login" method="POST">
-  <label>
-    Username
-    <input type="text" name="userName" placeholder="Your username" required>
-  </label>
+<div class="container image-signup-container">
+  <div class="row">
+    <div class="col signup-col">
+        <div>
+        <img class="signup-visual" src="/images/signup-visual-2.png" alt="signup visual">
+        </div>
+    </div>
 
-  <label>
-   Password
-    <input type="password" name="password" required>
-  </label>
 
-   <button type="submit"> Log-in  </button>
+    <div class="col signup-col" id="container signin-form-container">
+        <h4 class='form-typeh4'>Sign-in to Symbiosis</h4>
+  
+          <div class="registration-form container">
+            <form action="/login" method="POST">
+              <label>
+                Username
+                <input type="text" name="userName" placeholder="Your username" required>
+              </label>
+
+              <label>
+              Password
+                <input type="password" name="password" required>
+              </label>
+
+              <button type="submit" class="btn btn-primary btn-round signin-button">
+            Sign in <i class="fas fa-heart"></i> </button>
+
+
+              {{#if errorMessage}}
+              <div class="error"> {{errorMessage}}</div>
+              {{/if}}
+
+            </form>
+            </div>
+    </div>
+  </div>
 </div>
-
-
-{{#if errorMessage}}
-<div class="error"> {{errorMessage}}</div>
-{{/if}}
-
-</form>

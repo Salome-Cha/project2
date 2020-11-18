@@ -19,11 +19,6 @@
 
 <!-- NAVBAR -->
 
-<div class="container logo-container">
-<img src="/images/logo-nobackground.png" class="main-logo-nav" alt="logo">
-</div>
-
-
 <!-- IF HOMEPAGE :: NAVBAR HAS A TRANSPARENT BACKGROUND -->
 {{#if url }}
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
@@ -32,6 +27,7 @@
     <div class="inline-navbar">
       <ul class="navbar-nav mr-auto">
         <div class="navbar-flex container">
+
       <div class="segment-nav">
             <li class="nav-item left active">
               <a id="nav-element" class="nav-link" href="/"> Homepage <span class="sr-only">(current)</span></a>
@@ -39,8 +35,13 @@
             <li class="nav-item left">
               <a id="nav-element" class="nav-link" href="/services"> Services </a>
             </li>
-        </div>  
-        <div  class="segment-nav"> 
+      </div>  
+
+      <div class="segment-nav"> 
+          <img src="/images/logo-nobackground.png" class="navbar-brand main-logo-nav" alt="logo" />
+      </div>
+
+      <div  class="segment-nav"> 
             <li class="nav-item right">
               <a id="nav-element" class="nav-link" href="/blog">Blog</a>
             </li>
@@ -58,11 +59,12 @@
             </li>
             {{else}}
             <li class="nav-item right">
-              <a id="nav-element" class="signup-button" href="/n-profile"> My Profile</a>
+              <a id="nav-element" class="signup-button" href="/n-profile/{{_id}}"> My Profile</a>
             </li>
             {{/compare}}
-             {{/unless}}
+            {{/unless}}
       </div>     
+
         </div>
       </ul>
     </div>
@@ -88,7 +90,12 @@
               <a id="nav-element" class="nav-link" href="/services"> Services </a>
             </li>
         </div>  
-  <div  class="segment-nav"> 
+
+      <div class="segment-nav"> 
+          <img src="/images/logo-nobackground.png" class="navbar-brand main-logo-nav" alt="logo" />
+      </div>
+
+      <div  class="segment-nav"> 
             <li class="nav-item right">
               <a id="nav-element" class="nav-link" href="/blog">Blog</a>
             </li>
@@ -106,7 +113,7 @@
             </li>
             {{else}}
             <li class="nav-item right">
-              <a id="nav-element" class="signup-button" href="/n-profile"> My Profile</a>
+              <a id="nav-element" class="signup-button" href="/n-profile/{{_id}}"> My Profile</a>
             </li>
             {{/compare}}
              {{/unless}}
@@ -123,7 +130,7 @@
 
 
 <!-- INSERTION OF EACH PAGE'S CONTENT-->
-<div>
+<div class="global-body-full-content">
   {{{body}}}
 </div>
 

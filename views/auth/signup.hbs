@@ -1,149 +1,171 @@
-<h2>Signup</h2>
+
+<div class="global-body-margin-top">
+
+<div class="container image-signup-container">
+  <div class="row">
+    <div class="col signup-col">
+        <div>
+        <img class="signup-visual" src="/images/signup-visual-2.png" alt="signup visual">
+        </div>
+  </div>
 
 
+  <div class="col signup-col" id="container signup-form-container">
+      <h4 class='form-typeh4'>Signup to Symbiosis</h4>
+         <form action="/signup" method="POST" class="registration-form container">
+
+          <h5 class='form-typeh5'> Do you want to help or do you want to be help by the community? </h5>
+
+            <div class="signup-radio-button-type container">
+            <label for="help">
+              Provide help
+              <!--<input type="checkbox" name="helper" value="Provide help">-->
+              <input type="radio" name="userType" value="Provide help" >
+            </label>
+
+            <label for="need">
+              Be helped
+            <!-- <input type="checkbox" name="needy" value="Be helped">-->
+              <input type="radio" name="userType" value="Be helped" >
+            </label>
+            </div>
+
+            <label for="name">
+              <input type="text" name="firstName" placeholder="Your first name" required>
+            </label>
+
+            <label>
+              <input type="text" name="lastName" placeholder="Your last name" required>
+            </label>
+
+            <label>
+              <input type="text" name="userName" placeholder="Your username" required>
+            </label>
+
+            <label>
+              <input type="email" name="email" placeholder="Your email" required>
+            </label>
+
+            <div class="form-elements-grouping container">
+            <label>
+              <input type="text" name="address" placeholder="Your address">
+            </label>
+            <label>
+              <input type="text" name="city" placeholder="Your city">
+            </label>
+            </div>
+
+            <div class="form-elements-grouping container">
+            <label>
+              <input type="text" name="postCode" placeholder="Your postcode">
+            </label>
+            <label>
+              <input type="text" name="country" placeholder="Your country">
+            </label>
+            </div>
+
+            <label>
+            Password
+              <input type="password" name="password" required>
+            </label>
+
+
+
+
+{{if }}
+      <label>   
+        <h5 class='form-typeh5'> You want to provide: </h5>
+            <label>
+              <input type="radio" value="food"  name="helpType" id="food-helper">
+               Food  
+            </label>
+
+            <label>
+              <input type="radio" value="healthcare" name="helpType" id="healthcare-helper" >
+            Healthcare
+            </label>
+
+            <label>
+              <input type="radio" value="hosting" name="helpType" id="hosting-helper" >
+            Hosting
+            </label>
+
+            <label>
+              <input type="radio" value="administrative" name="helpType" id="administrative-helper" >
+             Administrative help
+            </label>
+      </label>
+
+
+      <label>   
+        <h5 class='form-typeh5'> You need help for: </h5>
+            <label>
+              <input type="radio" value="food"  name="needType" id="food-needer">
+             Food  
+            </label>
+
+            <label>
+              <input type="radio" value="healthcare" name="needType" id="healthcare-needer" >
+              Healthcare
+            </label>
+
+            <label>
+              <input type="radio" value="hosting" name="needType" id="hosting-needer" >
+              Hosting
+            </label>
+
+            <label>
+              <input type="radio" value="administrative" name="needType" id="administrative-needer" >
+              Administrative help
+            </label>
+      </label>
+
+
+      <label>
+            Please precise:
+              <select id="subService" name="subServices">
+                <div id="signup-medical-options">
+                    <option value="doctor">Doctor</option>
+                    <option value="nurse">Nurse</option>
+                    <option value="psychologist">Psychologist</option>
+                    <option value="medical student">Medical Student</option>
+                </div>
+                <div id="signup-administrative-options">
+                    <option value="lawyer">Lawyer</option>
+                    <option value="public advisor">Public Advisor</option>
+                    <option value="volunteer">Volunteer</option>
+                </div>
+                <div id="signup-hosting-options">
+                    <option value="resident">Resident</option>
+                    <option value="landlord">Landlord</option>
+                    <option value="hotel">Hotel</option>
+                </div>
+                <div id="signup-food-options">
+                    <option value="restaurant">Restaurant</option>
+                    <option value="grocery store">Grocery Store</option>
+                    <option value="other">Other</option>
+                </div>
+
+              </select>
+            </label>
+
+        <button type="submit" class="btn btn-primary btn-round submit-button">
+            Sign up <i class="fas fa-heart"></i> </button>
+
+
+
+          {{#if errorMessage}}
+          <div class="error"> {{errorMessage}}</div>
+          {{/if}}
+
+      </form>
+
+          </div>
+        </div>
   
-  <form action="/signup" method="POST" class="registration-form container">
+<div class="row">
+</div>
 
-    <h5> Do you want to help or to be helped? </h5>
+<script>
 
-      <label for="help">
-        Provide help
-        <!--<input type="checkbox" name="helper" value="Provide help">-->
-        <input type="radio" name="userType" value="Provide help" >
-      </label>
-
-      <label for="need">
-        Be helped
-       <!-- <input type="checkbox" name="needy" value="Be helped">-->
-        <input type="radio" name="userType" value="Be helped" >
-      </label>
-
-      <label for="name">
-        First Name
-        <input type="text" name="firstName" placeholder="Your first name" required>
-      </label>
-
-      <label>
-        Last Name
-        <input type="text" name="lastName" placeholder="Your last name" required>
-      </label>
-
-      <label>
-        Username
-        <input type="text" name="userName" placeholder="Your username" required>
-      </label>
-
-      <label>
-        Email
-        <input type="email" name="email" placeholder="Your email" required>
-      </label>
-
-      
-      <label>
-        Address
-        <input type="text" name="address" placeholder="Your address">
-      </label>
-
-        
-      <label>
-        City
-        <input type="text" name="city" placeholder="Your address">
-      </label>
-
-      <label>
-        PostCode
-        <input type="text" name="postCode" placeholder="Your postcode">
-      </label>
-
-     <label>
-        country 
-        <input type="text" name="country" placeholder="Your postcode">
-      </label>
-
-      <label>
-      Password
-        <input type="password" name="password" required>
-      </label>
-
-
-
-
-
-<label>   
-  <h5> You want to provide: </h5>
-      <label>
-      Food  
-        <input type="radio" value="food"  name="helpType" id="food-helper">
-      </label>
-
-      <label>
-      Healthcare
-        <input type="radio" value="healthcare" name="helpType" id="healthcare-helper" >
-      </label>
-
-      <label>
-      Hosting
-        <input type="radio" value="hosting" name="helpType" id="hosting-helper" >
-      </label>
-
-      <label>
-      Administrative help
-        <input type="radio" value="administrative" name="helpType" id="administrative-helper" >
-      </label>
-</label>
-
-
-<label>   <h5> You need help for: </h5>
-      <label>
-      Food  
-        <input type="radio" value="food"  name="needType" id="food-needer">
-      </label>
-
-      <label>
-      Healthcare
-        <input type="radio" value="healthcare" name="needType" id="healthcare-needer" >
-      </label>
-
-      <label>
-      Hosting
-        <input type="radio" value="hosting" name="needType" id="hosting-needer" >
-      </label>
-
-      <label>
-      Administrative help
-        <input type="radio" value="administrative" name="needType" id="administrative-needer" >
-      </label>
-</label>
-
-'grocery store','other'
-
-      <label>
-      Please precise:
-        <select id="subService" name="subServices">
-          <option value="doctor">Doctor</option>
-          <option value="nurse">Nurse</option>
-          <option value="psychologist">Psychologist</option>
-          <option value="medical student">Medical Student</option>
-          <option value="lawyer">Lawyer</option>
-          <option value="public advisor">Public Advisor</option>
-          <option value="volunteer">Volunteer</option>
-          <option value="resident">Resident</option>
-          <option value="landlord">Landlord</option>
-          <option value="hotel">Hotel</option>
-          <option value="restaurant">Restaurant</option>
-          <option value="grocery store">Grocery Store</option>
-          <option value="other">Other</option>
-          
-        </select>
-      </label>
-
-   <button type="submit" class="btn btn-primary btn-round submit-button">
-      Sign up <i class="fas fa-heart"></i> </button>
-
-
-
-    {{#if errorMessage}}
-    <div class="error"> {{errorMessage}}</div>
-    {{/if}}
-
-</form>
+</script>
