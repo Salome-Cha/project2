@@ -35,24 +35,3 @@
   </div>
 </div>
 
-
-
-
-
-
-<!-- display welcome user if the user is present: TO BE CHANGED WITH OUR NAMMING FOR USERNAME-->
-
-<hr>
-
-{{#if user}}
-
-Welcome, {{user.username}}
-
-<form method="POST" action="/logout">
-
-<button type="submit"> Logout </button>
-</form>
-
-<a href="/private"> See your contacts </a>
-
-{{/if}}

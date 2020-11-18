@@ -14,15 +14,18 @@ function requireLogin(req, res, next) {  // we create a middleware function, to 
 router.get('/h-map', (req, res) =>{
   console.log("test to check")
   User.find({userType: "needy"})
+  .populate("needType")
   .then ((needyUsersFromDB) => {
     let needyUsersFromDBString = JSON.stringify(needyUsersFromDB);
     let userStr = JSON.stringify(req.session.currentUser);
-    res.render('map/helper-map', {user: userStr, markers: needyUsersFromDBString});
+    res.render('map/helper-map', {user: userStr, needyUsersFromDB: needyUsersFromDB, markers: needyUsersFromDBString});
   })
 
 // map shall render also the object: helperNearby:
  
 })
+
+
 
 
 // GET THE NEEDY MAP

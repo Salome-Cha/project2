@@ -220,13 +220,30 @@ width: 200px;
 .helper-map-page-bloc{
   display: flex;
   flex-wrap: wrap;
+  margin-right: 0;
 }
 
 #helperMap {
   height: 400px;
-  width: 100%;
+  width: 80vw;
 }
 
+.filters-group{
+  display: inline-flex;
+  color: grey;
+  flex-direction: raw;
+  font-size: 12px;
+}
+
+.global-map-group {
+  display: flex; 
+  flex-wrap:wrap;
+  flex-direction: raw;
+}
+
+.profile-suggestions {
+width: 300px;
+}
 
 /* REGISTRATION FORMS GENERIC ELEMENTS */
 .registration-form{

@@ -1,42 +1,80 @@
 <div class="global-body-margin-top">
 
 
-<h1>Find people who needs help around you</h1>
+<h4 class="map-title">Find people who needs help around you</h4>
 
-<div> row with content like filters, search bar.</div>
 
-<div class="helper-map-page-bloc">
-{{!--
-  <div>
-    Other members nearby:
-    <div>
-      {{#each needyNearby}}
-      <div class="snippet-preview">
-          <!-- <img class="preview-image" src="{{image}}"> -->
-          <h5> {{username}}</h5>
-          <p> Needs help for: {{username}}</p>  
-          <a href="/n-profile/{{_id}}"> See more</a>
-      </div>  
-      {{/each}}
+<div id="filtersSection">   
+        <h6 class='filters-group container'> Filter: </h6>
+        <div class="map-filters">
+            <label>
+            Food
+            <input type="radio" value="food" onclick="setFilterNeedType(this)"  name="filterNeedType"  class="radio-button radio-button-food" >
+            </label>
+
+            <label>
+            Healthcare<input type="radio" value="healthcare" onclick="setFilterNeedType(this)" name="filterNeedType"  class="radio-button radio-button-healthcare" >
+            </label>
+
+            <label>
+             Hosting <input type="radio" value="hosting" onclick="setFilterNeedType(this)" name="filterNeedType"  class="radio-button radio-button-hosting" >
+            </label>
+
+            <label>
+            Administrative Help <input type="radio" onclick="setFilterNeedType(this)" value="administrative" name="filterNeedType"  class="radio-button radio-button-administrative" >
+            </label>
+
+            <label>
+            All  <input type="radio" value="all" onclick="setFilterNeedType(this)" name="filterNeedType" class="radio-button radio-button-all" >
+            </label>
+        </div>
+      </div>
+</div>
+
+<div class="container">
+  <div class="raw global-map-group">
+    <div class="profile-suggestions" >
+      <div>
+        Other members nearby:
+        <div>
+          {{#each needyUsersFromDB}}
+          <div class="snippet-preview">
+              <!-- <img class="preview-image" src="{{image}}"> -->
+              <h5> {{userName}}</h5>
+              <p> Needs help for: {{userName}}</p>  
+              <a href="/n-profile/{{_id}}"> See more</a>
+          </div>  
+          {{/each}}
+        </div>
+      </div> 
     </div>
-  </div> --}}
+
+
+{{!-- The map --}}
+
+<div class="helper-map-page-bloc"></div>
+</div>
+</div>
 
 
 <input type="hidden" id="userInput" value="{{user}}">
 <input type="hidden" id="allMarkers" value="{{markers}}">
 <div style="width:1000px" id="helperMap"></div>
-</div>
 
-</div>
-     <script
+
+
+<script
       src="https://maps.googleapis.com/maps/api/js?key={{gmapKey}}&callback=initMap&libraries=&v=weekly"
       defer
     ></script>  
 <script>
  
+
 //Helper Map Initiation
+let filter;
 let helperMap;
 let geocoder;
+let googleMarkers = [];
 //const infowindow = new google.maps.InfoWindow();
 function initMap() {
   geocoder = new google.maps.Geocoder();
@@ -53,19 +91,30 @@ function initMap() {
 
 function showMarkers() {  // markers are comming from route and it is an array
    let markers = JSON.parse(document.getElementById("allMarkers").value);
+   console.log("markers", markers);
+
+   console.log("filter", filter);
+
+   if (filter && filter !== "all") {
+     clearMarkers();
+     markers = markers.filter((marker) => {
+       return marker.needType.name === filter; 
+     });
+   }
 
    // add some filters based on the radio buttons checked.
-   debugger;
+  
    markers.forEach((marker) =>{
      setMarker({ lat: marker.geocoding.lat, lng: marker.geocoding.lng})
     });
  };
 
 function setMarker(marker) {
-  new google.maps.Marker({
+  const googleMarker = new google.maps.Marker({
    position: marker,
     map: helperMap
   });
+  googleMarkers.push(googleMarker);
  };
 
   function getCurrentLocation() {
@@ -98,27 +147,18 @@ function setMarker(marker) {
     });
   }
 
+function setFilterNeedType(radio){
+  filter = radio.value;
+  showMarkers();
 
+}
 
-//  function searchPlaces() {
-//    const heden = {lat: 38.7117206, lng: -9.1264315};
-//
-//    let request = {
-//      location: heden,
-//      radius: '50',
-//      type: ['Restaurants']
-//    };
-//    let service = new google.maps.places.PlacesService(map);
-//    service.nearbySearch(request, (results, status) =>{
-//      if (status === google.maps.places.PlacesServiceStatus.OK) {
-//        for(let i = 0; i < results.length; i++) {
-//          let lat = results[i].geometry.location.lat();
-//          let lng = results[i].geometry.location.lng();
-//          setMarker({lat, lng});
-//        }
-//      }
-//    })
-//  }
+function clearMarkers() {
+  googleMarkers.forEach((googleMarker) =>{
+    googleMarker.setMap(null);
+  })
+}
+
 setTimeout(()=> {
   showMarkers();
 },1000)

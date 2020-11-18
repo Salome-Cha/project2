@@ -85,7 +85,7 @@ router.post('/signup', (req, res) =>{
         .then ((user) => {
           console.log("A needer was created")
           req.session.currentUser = user;
-          res.redirect('/');  // need to pass the user when we change for the map {user: req.session.currentUser}
+          res.redirect('/h-map');  // need to pass the user when we change for the map {user: req.session.currentUser}
         })
         .catch ((err) => console.log("An error occured while creating a needer:", err))
     }
@@ -117,8 +117,7 @@ router.post('/login', (req, res) => {
       if(bcrypt.compareSync(password, user.password)) {
         //login sucess
         req.session.currentUser = user;
-        res.redirect('/');
-        res.render('index', {user: req.session.currentUser})
+        res.redirect('/h-map')
       } else {
         //pass dont match
         res.render('auth/login', {errorMessage: 'Invalid Login Password'});
