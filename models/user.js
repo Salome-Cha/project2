@@ -54,6 +54,9 @@ const userSchema = new Schema ({
     type: Schema.Types.ObjectId, //foreign key
     ref: 'NeedType' // relates to Author Model
   },
+  geocoding:  {
+     lat: Number, lng:Number
+  }
 });
 
 

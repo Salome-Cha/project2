@@ -1,20 +1,33 @@
 <div class="global-body-margin-top">
 
 
-<h1>Helper Map</h1>
+<h1>Find people who needs help around you</h1>
 
 <div> row with content like filters, search bar.</div>
 
 <div class="helper-map-page-bloc">
+{{!--
+  <div>
+    Other members nearby:
+    <div>
+      {{#each needyNearby}}
+      <div class="snippet-preview">
+          <!-- <img class="preview-image" src="{{image}}"> -->
+          <h5> {{username}}</h5>
+          <p> Needs help for: {{username}}</p>  
+          <a href="/n-profile/{{_id}}"> See more</a>
+      </div>  
+      {{/each}}
+    </div>
+  </div> --}}
 
-  <div>column with previews</div>
-<button type="submit" onclick="getCurrentLocation()">Get Current Location</button>
 
-  
-  <div style="width:1000px" id="helperMap"></div>
+<input type="hidden" id="userInput" value="{{user}}">
+<input type="hidden" id="allMarkers" value="{{markers}}">
+<div style="width:1000px" id="helperMap"></div>
 </div>
-</div>
 
+</div>
      <script
       src="https://maps.googleapis.com/maps/api/js?key={{gmapKey}}&callback=initMap&libraries=&v=weekly"
       defer
@@ -24,27 +37,36 @@
 //Helper Map Initiation
 let helperMap;
 let geocoder;
-const infowindow = new google.maps.InfoWindow();
+//const infowindow = new google.maps.InfoWindow();
 function initMap() {
   geocoder = new google.maps.Geocoder();
-  const lisbon = { lat: 38.7117206, lng: -9.1264315 };
+   let currentUser = JSON.parse(document.getElementById("userInput").value);
+ //  const lisbon = { lat: 38.7117206, lng: -9.1264315 };
+
+ //  const centralPoint = user.geocoding;
   helperMap = new google.maps.Map(document.getElementById('helperMap'), {
     zoom: 17,
-    center: lisbon
+    center: {lat: currentUser.geocoding.lat, lng: currentUser.geocoding.lng}
   })
 }
-//  function showmarkers(markers) {  // markers are comming from route and it is an array
-//    markers.forEach((marker) =>{
-//      setMarker(marker)
-//    });
-//  };
 
-//  function setMarker(marker) {
-//    new google.maps.Marker({
-//      position: marker,
-//      map: map
-//    });
-//  };
+
+function showMarkers() {  // markers are comming from route and it is an array
+   let markers = JSON.parse(document.getElementById("allMarkers").value);
+
+   // add some filters based on the radio buttons checked.
+   debugger;
+   markers.forEach((marker) =>{
+     setMarker({ lat: marker.geocoding.lat, lng: marker.geocoding.lng})
+    });
+ };
+
+function setMarker(marker) {
+  new google.maps.Marker({
+   position: marker,
+    map: helperMap
+  });
+ };
 
   function getCurrentLocation() {
     navigator.geolocation.getCurrentPosition((position) =>{
@@ -76,24 +98,7 @@ function initMap() {
     });
   }
 
-//  function calcRoute() {
-//    let directionsService = new google.maps.DirectionsService();
-//    let directionsRenderer = new google.maps.DirectionsRenderer();
-//
-//    let start = "Santa Apolónia, Lisboa";
-//    let end = "Rato, Lisboa";
-//    let request = {
-//      origin: start,
-//      destination: end,
-//      travelMode: 'DRIVING'
-//    };
-//    directionsService.route(request, (result, status) =>{
-//      if(status === 'OK') {
-//        directionsRenderer.setDirections(result);
-//      }
-//    });
-//    directionsRenderer.setMap(map);
-//  }
+
 
 //  function searchPlaces() {
 //    const heden = {lat: 38.7117206, lng: -9.1264315};
@@ -114,6 +119,9 @@ function initMap() {
 //      }
 //    })
 //  }
-
+setTimeout(()=> {
+  showMarkers();
+},1000)
 
 </script>
+

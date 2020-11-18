@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/stylesheets/style.css" />
+  
 </head>
 
 
@@ -20,6 +21,9 @@
 <!-- NAVBAR -->
 
 <!-- IF HOMEPAGE :: NAVBAR HAS A TRANSPARENT BACKGROUND -->
+
+
+
 {{#if url }}
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -45,7 +49,7 @@
             <li class="nav-item right">
               <a id="nav-element" class="nav-link" href="/blog">Blog</a>
             </li>
-            {{#unless user}}
+            {{#if user}}
             <li class="nav-item right">
               <a id="nav-element" class="nav-link" href="/login">Login</a>
             </li>
@@ -53,16 +57,22 @@
               <a id="nav-element" class="signup-button" href="/signup"> Signup</a>
             </li>
             {{else}}
-            {{#compare user.userType "=" 'helper'}}
+
+
+            
+         {{#eq user.userType 'helper'}} 
             <li class="nav-item right">
-              <a id="nav-element" class="signup-button" href="/h-profile"> My Profile</a>
+         
+             </li>
+             <li class="nav-item right">
+               <a id="nav-element" class="signup-button" href="/h-profile/{{_id}}"> My Profile</a>
             </li>
             {{else}}
             <li class="nav-item right">
               <a id="nav-element" class="signup-button" href="/n-profile/{{_id}}"> My Profile</a>
             </li>
-            {{/compare}}
-            {{/unless}}
+          {{/eq}} 
+            {{/if}}
       </div>     
 
         </div>
@@ -107,15 +117,24 @@
               <a id="nav-element" class="signup-button" href="/signup"> Signup</a>
             </li>
             {{else}}
-            {{#compare user.userType "=" 'helper'}}
+             <form method="POST" action="/logout">
+            <button type="submit" class="signup-button"> Logout </button>
+            </form>
+            
+           {{#eq user.userType 'helper'}}
             <li class="nav-item right">
+
+            <form method="POST" action="/logout">
+            <button type="submit" class="signup-button"> Logout </button>
+            </form>
               <a id="nav-element" class="signup-button" href="/h-profile"> My Profile</a>
             </li>
             {{else}}
             <li class="nav-item right">
               <a id="nav-element" class="signup-button" href="/n-profile/{{_id}}"> My Profile</a>
             </li>
-            {{/compare}}
+         {{/eq}}  
+         
              {{/unless}}
       </div>       
         </div>

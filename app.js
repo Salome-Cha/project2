@@ -9,11 +9,15 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 const session      = require('express-session'); 
-const helpers      = require('handlebars-helpers')
+const helpers      = require('handlebars-helpers')()
+const MongoStore   = require('connect-mongo')(session);
 
+
+// Register helpers list from handlebars-helpers
+hbs.registerHelper(helpers);
 
 mongoose
-  .connect('mongodb://localhost/project', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -40,15 +44,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
-// app.use(
-//   session({
-//     secret: 'my secret',
-//     cookie: {maxAge: 60000}, //1min
-//     rolling: true //--> makes the session on if you're browsing
-//   })
-// )
+// Express session set up
+app.use(
+  session({
+    secret: 'mysecret',
+    cookie: {maxAge: 1200000},
+    rolling: true,
+    store: new MongoStore ({ // store every session information in mongo
+      mongooseConnection: mongoose.connection,
+    // We could also add some parameters, to limit the time from the backend (time to leave, etc.).
+    })
+  })
+)
 
-hbs.registerHelper(helpers());
+
 
 // default value for title local
 app.locals.title = 'Symbiosis';

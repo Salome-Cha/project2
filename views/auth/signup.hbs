@@ -20,13 +20,13 @@
             <label for="help">
               Provide help
               <!--<input type="checkbox" name="helper" value="Provide help">-->
-              <input type="radio" name="userType" value="Provide help" >
+              <input type="radio" id="radioHelper" name="userType" value="Provide help" onclick="checkUserType()" >
             </label>
 
             <label for="need">
               Be helped
             <!-- <input type="checkbox" name="needy" value="Be helped">-->
-              <input type="radio" name="userType" value="Be helped" >
+              <input type="radio" id="radioNeedy"  name="userType" value="Be helped" onclick="checkUserType()" >
             </label>
             </div>
 
@@ -72,8 +72,7 @@
 
 
 
-{{if }}
-      <label>   
+      <div id="divHelperSection" style="display: none;">   
         <h5 class='form-typeh5'> You want to provide: </h5>
             <label>
               <input type="radio" value="food"  name="helpType" id="food-helper">
@@ -94,10 +93,10 @@
               <input type="radio" value="administrative" name="helpType" id="administrative-helper" >
              Administrative help
             </label>
-      </label>
+      </div>
 
 
-      <label>   
+      <div id="divNeedySection" style="display: none;">   
         <h5 class='form-typeh5'> You need help for: </h5>
             <label>
               <input type="radio" value="food"  name="needType" id="food-needer">
@@ -118,13 +117,13 @@
               <input type="radio" value="administrative" name="needType" id="administrative-needer" >
               Administrative help
             </label>
-      </label>
+      </div>
 
 
-      <label>
+      <div >
             Please precise:
-              <select id="subService" name="subServices">
-                <div id="signup-medical-options">
+              <select id="subServiceSelect" name="subServices">
+                <div id="signup-medical-options" style="display: ,;">
                     <option value="doctor">Doctor</option>
                     <option value="nurse">Nurse</option>
                     <option value="psychologist">Psychologist</option>
@@ -147,7 +146,7 @@
                 </div>
 
               </select>
-            </label>
+            </div>
 
         <button type="submit" class="btn btn-primary btn-round submit-button">
             Sign up <i class="fas fa-heart"></i> </button>
@@ -155,8 +154,9 @@
 
 
           {{#if errorMessage}}
-          <div class="error"> {{errorMessage}}</div>
+          <div class="error">  {{errorMessage}}</div>
           {{/if}}
+
 
       </form>
 
@@ -167,5 +167,37 @@
 </div>
 
 <script>
+  let subServices = []
 
+
+  function checkUserType() {
+    if (document.getElementById("radioHelper").checked) {
+       document.getElementById("divHelperSection").style.display = "flex";
+       document.getElementById("divNeedySection").style.display = "none";
+    } else if (document.getElementById("radioNeedy").checked) {
+        document.getElementById("divHelperSection").style.display = "none";
+       document.getElementById("divNeedySection").style.display = "flex";
+    }
+
+    function populateSubServices() {
+      //if healthcare
+      subServices.push({
+        text: "Doctor",
+        value: "doctor"
+      },
+      {
+        text: "Nurse",
+        value: "nurse"
+      })
+
+      subServices.forEach((subService) => {
+         document.getElementById("subServiceSelect").innerHTML += `<option value="${subService.value}">${subService.text}</option>`;
+      })
+     
+
+
+    }
+   
+  }
 </script>
+

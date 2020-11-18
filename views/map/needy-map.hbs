@@ -5,8 +5,19 @@
 
 <div class="needy-map-page-bloc">
 
-  <div>column with previews</div>
-
+    <div>
+    Other members nearby:
+    <div>
+      {{#each needyNearby}}
+      <div class="snippet-preview">
+          <!-- <img class="preview-image" src="{{image}}"> -->
+          <h5> {{username}}</h5>
+          <p> Needs help for: {{username}}</p>  
+          <a href="/n-profile/{{_id}}"> See more</a>
+      </div>  
+      {{/each}}
+    </div>
+  </div>
   
   <div style="width:1000px" id="needyMap"></div>
 </div>

@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const HelpType= require('../models/HelpType.js');
 
-const DB_NAME = 'project';
-mongoose.connect(`mongodb://localhost/${DB_NAME}`, {
+mongoose.connect(process.env.MONGODB_URI, {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
+
 
 const helps = [
   {name: 'food',

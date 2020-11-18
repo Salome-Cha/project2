@@ -5,54 +5,34 @@ const saltRounds = 10;
 const User = require('../models/User');
 const NeedType = require('../models/NeedType');
 const HelpType = require('../models/HelpType');
-
+const axios = require('axios');
+const session = require('express-session')
 
 //---------- SIGN UP -------------
 
-router.get('/signup', (req, res) =>{
-  res.render('auth/signup');
-});
+
 
 router.post('/signup', (req, res) =>{
   let {firstName, lastName, userName, email, address, city, postCode, password, country, userType, helpType, needType, subServices} = req.body;
   let color;
-  const salt = bcrypt.genSaltSync(saltRounds);
-  const hashPassword = bcrypt.hashSync(password, salt);
-  console.log('helper', userType);
-  if(userType === 'Provide help') {
-    userType = 'helper';
-  } else {
-    userType = 'needy';
-  }
-  if(userType === 'helper') {
-    switch (helpType) {
-      case "food": 
-       color = "turchese";
-       break;
-      case "hosting": 
-       color = "blue";
-       break;
-      case "administrative": 
-       color = "peach";
-       break;
-       case "healthcare": 
-       color = "navy";
-       break;
+  let geocoding;
+
+  axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${postCode}+${address}+${city}&key=${process.env.GOOGLE_MAPS_API_KEY}`)
+  .then((responsegeo) => {
+  geocoding = responsegeo.data.results[0].geometry.location;
+  
+  })
+  .then(() => {
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const hashPassword = bcrypt.hashSync(password, salt);
+    console.log('helper', userType);
+    if(userType === 'Provide help') {
+      userType = 'helper';
+    } else {
+      userType = 'needy';
     }
-
-    //HelpType.findOne({name: userType, subServices})
-
-        HelpType.find({name: helpType, subServices: subServices}) // subst when created
-        .then((response) => { 
-          let helpId = response[0]._id;
-          User.create({firstName, lastName, userName, email, userType, password: hashPassword, address, postCode, city, country, serviceType: helpId});
-        }).then ((user) => {
-        console.log("A helper was created")
-        res.redirect('/')
-      })
-        .catch ((err) => console.log("An error occured while creating a helper:", err))
-  } else {
-      switch (needType) {
+    if(userType === 'helper') {
+      switch (helpType) {
         case "food": 
          color = "turchese";
          break;
@@ -66,18 +46,54 @@ router.post('/signup', (req, res) =>{
          color = "navy";
          break;
       }
- 
-      NeedType.find({name: needType })
-      .then((response) => { 
-        let needId = response[0]._id
-        User.create({firstName, lastName, userName, email, password: hashPassword, address, postCode, city, country, userType, needType: needId})
-      })
-      .then ((response) => {
-        console.log("A needer was created")
-        res.redirect('/');
-      })
-      .catch ((err) => console.log("An error occured while creating a needer:", err))
-  }  
+  
+      //HelpType.findOne({name: userType, subServices})
+  
+          HelpType.find({name: helpType, subServices: subServices}) // subst when created
+          .then((response) => { 
+            console.log(response)
+            let helpId = response[0]._id;
+            return User.create({firstName, lastName, userName, email, userType, password: hashPassword, address, postCode, city, country, geocoding, serviceType: helpId});
+          }).then ((user) => {
+          console.log("A helper was created")
+          req.session.currentUser = user;
+          res.redirect('/') // need to pass the user when we change for the map {user: req.session.currentUser}
+        })
+          .catch ((err) => console.log("An error occured while creating a helper:", err))
+    } else {
+        switch (needType) {
+          case "food": 
+           color = "turchese";
+           break;
+          case "hosting": 
+           color = "blue";
+           break;
+          case "administrative": 
+           color = "peach";
+           break;
+           case "healthcare": 
+           color = "navy";
+           break;
+        
+          }
+   
+        NeedType.find({name: needType })
+        .then((response) => { 
+          let needId = response[0]._id
+          return User.create({firstName, lastName, userName, email, password: hashPassword, address, postCode, city, country, geocoding, userType, needType: needId})
+        })
+        .then ((user) => {
+          console.log("A needer was created")
+          req.session.currentUser = user;
+          res.redirect('/');  // need to pass the user when we change for the map {user: req.session.currentUser}
+        })
+        .catch ((err) => console.log("An error occured while creating a needer:", err))
+    }
+
+
+  })
+
+   
 })
 
 
@@ -102,7 +118,7 @@ router.post('/login', (req, res) => {
         //login sucess
         req.session.currentUser = user;
         res.redirect('/');
-        res.render('index', {user})
+        res.render('index', {user: req.session.currentUser})
       } else {
         //pass dont match
         res.render('auth/login', {errorMessage: 'Invalid Login Password'});
@@ -110,11 +126,12 @@ router.post('/login', (req, res) => {
     })
 });
 
+
+// LOGOUT
 router.post('/logout', (req, res) =>{
   req.session.destroy();
   res.redirect('/');
 })
-
 
 
 module.exports = router;

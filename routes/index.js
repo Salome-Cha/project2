@@ -4,20 +4,26 @@ const User = require('../models/User');
 const NeedType = require('../models/NeedType');
 const HelpType = require('../models/HelpType');
 
-// function requireLogin(req, res, next) {
-//   if (req.session.currentUser) {
-//     next();
-//   } else {
-//     res.redirect('/login');
-//   }
-// }
+
+// Require a middleware
+function requireLogin(req, res, next) {  // we create a middleware function, to pass it in the route.
+  if (req.session.currentUser) {   // If this exists, means we are authenticated.
+    next();
+  } else {
+    res.redirect('/login')
+  }
+}
 
 
 /* GET home page */
 router.get('/', (req, res, next) => {
   // req.app.locals.loggedUser = req.session.currentUser; //--> to show on the views we must set it to req.app.locals ... so it exports..
   let url = req.url;
-  res.render('main/homepage', {url} /* {user: req.session.currentUser} */);
+  res.render('main/homepage', {url: url, user: req.session.currentUser});
+});
+
+router.get('/signup', (req, res) =>{
+  res.render('auth/signup');
 });
 
 router.get('/services', (req, res) =>{
