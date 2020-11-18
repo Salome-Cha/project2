@@ -8,9 +8,11 @@
 <div class="helper-map-page-bloc">
 
   <div>column with previews</div>
+<button type="submit" onclick="getCurrentLocation()">Get Current Location</button>
 
   
   <div style="width:1000px" id="helperMap"></div>
+</div>
 </div>
 
      <script
@@ -21,25 +23,28 @@
  
 //Helper Map Initiation
 let helperMap;
+let geocoder;
+const infowindow = new google.maps.InfoWindow();
 function initMap() {
+  geocoder = new google.maps.Geocoder();
   const lisbon = { lat: 38.7117206, lng: -9.1264315 };
   helperMap = new google.maps.Map(document.getElementById('helperMap'), {
     zoom: 17,
     center: lisbon
   })
 }
-  function showmarkers(markers) {  // markers are comming from route and it is an array
-    markers.forEach((marker) =>{
-      setMarker(marker)
-    });
-  };
+//  function showmarkers(markers) {  // markers are comming from route and it is an array
+//    markers.forEach((marker) =>{
+//      setMarker(marker)
+//    });
+//  };
 
-  function setMarker(marker) {
-    new google.maps.Marker({
-      position: marker,
-      map: map
-    });
-  };
+//  function setMarker(marker) {
+//    new google.maps.Marker({
+//      position: marker,
+//      map: map
+//    });
+//  };
 
   function getCurrentLocation() {
     navigator.geolocation.getCurrentPosition((position) =>{
@@ -47,50 +52,68 @@ function initMap() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       }
-      map.setCenter(pos);
-      map.setZoom(13);
+ //     console.log(pos, 'this is my position')
+      helperMap = new google.maps.Map(document.getElementById('helperMap'), {
+      zoom: 13,
+      center: pos
+     })
     })
   }
 
-  function calcRoute() {
-    let directionsService = new google.maps.DirectionsService();
-    let directionsRenderer = new google.maps.DirectionsRenderer();
 
-    let start = "Santa Apolónia, Lisboa";
-    let end = "Rato, Lisboa";
-    let request = {
-      origin: start,
-      destination: end,
-      travelMode: 'DRIVING'
-    };
-    directionsService.route(request, (result, status) =>{
-      if(status === 'OK') {
-        directionsRenderer.setDirections(result);
+  function codeAddress() {
+    var address = document.getElementById('address').value;
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
       }
     });
-    directionsRenderer.setMap(map);
   }
 
-  function searchPlaces() {
-    const heden = {lat: 38.7117206, lng: -9.1264315};
+//  function calcRoute() {
+//    let directionsService = new google.maps.DirectionsService();
+//    let directionsRenderer = new google.maps.DirectionsRenderer();
+//
+//    let start = "Santa Apolónia, Lisboa";
+//    let end = "Rato, Lisboa";
+//    let request = {
+//      origin: start,
+//      destination: end,
+//      travelMode: 'DRIVING'
+//    };
+//    directionsService.route(request, (result, status) =>{
+//      if(status === 'OK') {
+//        directionsRenderer.setDirections(result);
+//      }
+//    });
+//    directionsRenderer.setMap(map);
+//  }
 
-    let request = {
-      location: heden,
-      radius: '50',
-      type: ['Restaurants']
-    };
-    let service = new google.maps.places.PlacesService(map);
-    service.nearbySearch(request, (results, status) =>{
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        for(let i = 0; i < results.length; i++) {
-          let lat = results[i].geometry.location.lat();
-          let lng = results[i].geometry.location.lng();
-          setMarker({lat, lng});
-        }
-      }
-    })
-  }
+//  function searchPlaces() {
+//    const heden = {lat: 38.7117206, lng: -9.1264315};
+//
+//    let request = {
+//      location: heden,
+//      radius: '50',
+//      type: ['Restaurants']
+//    };
+//    let service = new google.maps.places.PlacesService(map);
+//    service.nearbySearch(request, (results, status) =>{
+//      if (status === google.maps.places.PlacesServiceStatus.OK) {
+//        for(let i = 0; i < results.length; i++) {
+//          let lat = results[i].geometry.location.lat();
+//          let lng = results[i].geometry.location.lng();
+//          setMarker({lat, lng});
+//        }
+//      }
+//    })
+//  }
 
 
 </script>
-</div>
