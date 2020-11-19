@@ -18,7 +18,7 @@ const userSchema = new Schema ({
   },
   photo: {
       type: String,
-      default: '/images/user-default-pic.png'
+      default: 'https://res.cloudinary.com/dvrlwaki5/image/upload/v1605784547/user-default-pic_wcwdq6.png'
   },
   email: {
     type: String,
