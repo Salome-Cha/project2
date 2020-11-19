@@ -662,13 +662,6 @@ margin-bottom: 30px;
 font-size: 14px;
 }
 
-.title-bloc{
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  color: grey;
-  padding-top: 20px;
-}
 .profile-title{
   font-size: 20px;
 }
@@ -688,7 +681,7 @@ font-size: 14px;
   display: flex;
   flex-direction: column;
   position: relative;
-  top: 50px;
+  top: 20px;
   left: -80px;
 }
 
