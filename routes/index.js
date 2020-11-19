@@ -32,5 +32,14 @@ router.get('/services', (req, res) =>{
 router.get('/blog', (req, res) =>{
   res.render('main/blog');
 })
+router.get('/about', (req, res) =>{
+  res.render('main/aboutUs');
+});
+router.get('/faq', (req, res) =>{
+  res.render('main/faq');
+});
+router.get('/contacts', (req, res) =>{
+  res.render('main/contacts');
+});
 
 module.exports = router;
