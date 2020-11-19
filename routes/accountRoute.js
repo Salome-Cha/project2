@@ -62,6 +62,7 @@ router.get('/my-n-profile/:myId/edit', (req, res) => {
         res.render('error', {err})
       })
 });
+
 router.post('/my-n-profile/:myId/edit',fileUpload.single('photo'), (req, res) =>{
   let myEditedId = req.params.myId;
   let {firstName, lastName, address, postCode, description} = req.body;
@@ -104,11 +105,6 @@ router.post('/my-h-profile/:myId/edit',fileUpload.single('photo'), (req, res) =>
     res.render('error', {err})
   });
 }); 
-
-
-
-
-
 
 
 
