@@ -1,41 +1,48 @@
 <div class="global-body-margin-top">
 
+<div class='title-bloc container'>
+<h4 class='profile-title'> My Profile</h4>
+</div>
+
 <div class="specific-profile-container">
 
-<div>
-<h4> My Profile</h4>
-
-<div class="container identity-big-bloc row">
-
-    <div class="profile-photo">
-          <img class="user-photo" src="{{user.photo}}">
+<div class='container global-profile-view'>
+    <div class="col-sm-2 profile-photo">
+              <img class="user-photo" src="{{user.photo}}">
     </div>
 
-    <div class="identity-container">
-        <div class="identity-bloc">
-          <div>Username: {{user.userName}} </div>
-          <div>First Name:  {{user.firstName}} </div>
-          <div>Last Name:  {{user.lastName}} </div>
+<div class="col-sm-6">
+    <div class="container identity-big-bloc">
+     
+        <div class="identity-container">
+            <div class="identity-bloc">
+              <ul>
+              <li>Username: {{user.userName}} </li>
+              <li>First Name:  {{user.firstName}} </li>
+              <li>Last Name:  {{user.lastName}} </li>
+              <li>City: {{user.city}} </li>
+             <li>Email: {{user.email}} </li>
+              <li>Type of service provided: {{user.serviceType.name}} </li>
+             </ul>
+            </div>
         </div>
     </div>
 </div>
 
-    <div class="identity-details-container"></div>
-        <div>
-          <div>City: {{user.city}} </div>
-          <div>Email: {{user.email}} </div>
-        </div>
-    </div>
 
+<div class="col-sm-4">
+  <div class="bloc-description-link">
+      <div>
+      Description: {{user.Description}}
+      </div>
+      <a class="submit-button edit-pro-button" href="/my-h-profile/{{user._id}}/edit"> Edit my profile </a>
 
-<div class="profile-type">
-Type of service provided: {{user.serviceType.name}}
+  </div>
 </div>
-
-<a class="submit-button" href="/h-profile/{{loggedUser._id}}/edit"> Edit my profile </a>
-
-<a class="submit-button" href="/my-h-profile/{{user._id}}/edit"> Edit my profile </a>
 
 </div>
 </div>
 </div>
+</div>
+
+

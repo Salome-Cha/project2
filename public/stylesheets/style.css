@@ -344,6 +344,11 @@ margin-bottom: 30px;
   align-items: center;
 }
 
+.radio-button-map{
+  text-decoration: none;
+
+}
+
 /* SNIPPET PREVIEW */
 .snippet-preview {
   font-size: 12px;
@@ -376,6 +381,10 @@ margin-bottom: 30px;
   border: 1px solid #EB596E;
   border-radius: 30px;
   margin-right: 20px;
+}
+
+.snippet-see-profile a {
+  text-decoration: none;
 }
 
 .snippet-see-profile{
@@ -636,30 +645,73 @@ margin-bottom: 30px;
   margin: 0;
   padding: 0;
   background-size: contains;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
   padding-top: 40px;
   color: grey;
 }
 
+.global-profile-view {
+  display: flex;
+}
+
+.profile-photo{
+  position: relative;
+  top: 100px;
+}
+
+.identity-container{
+font-size: 14px;
+}
+
+.title-bloc{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  color: grey;
+  padding-top: 20px;
+}
+.profile-title{
+  font-size: 20px;
+}
+
+.identity-big-bloc {
+  position: relative;
+  top: 100px;
+}
+
 .user-photo{
-  width: 150px;
-  height: 150px;
+  width: 170px;
+  height: 170px;
   border-radius: 50%
 }
 
 .identity-bloc{
   display: flex;
   flex-direction: column;
+  position: relative;
+  top: 50px;
+  left: -80px;
 }
 
 
 .identity-big-bloc{
  display: flex;
- flex-direction: row;
+ flex-direction: column;
  justify-content: space-around;
  align-items: center;
 }
+
+.bloc-description-link{
+  border: 1px solid grey;
+  position: relative;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-pro-button{
+  margin-top: 80px;
+  width: 200px;
+}
+
