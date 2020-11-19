@@ -48,6 +48,17 @@ router.get('/n-profile/:userId', (req, res) =>{
 
 //---------- EDIT THE PROFILE -------------
 
+router.get('/n-profile/:userId/edit', (req, res) => {
+  let userId = req.params.userId;
+  User.findById(userId)
+    .populate('inNeedType')
+      .then((thisUser) =>{ 
+        res.render('main/edit-needy-profile', {user: thisUser})
+       })
+       .catch((err) => {
+        res.render('error', {err}) 
+      })    
+});
 
 
 module.exports = router;

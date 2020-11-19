@@ -127,11 +127,11 @@
             <form method="POST" action="/logout">
             <button type="submit" class="signup-button"> Logout </button>
             </form>
-              <a id="nav-element" class="signup-button" href="/h-profile"> My Profile</a>
+              <a id="nav-element" class="signup-button" href="/h-profile{{user._id}}"> My Profile</a>
             </li>
             {{else}}
             <li class="nav-item right">
-              <a id="nav-element" class="signup-button" href="/n-profile/{{_id}}"> My Profile</a>
+              <a id="nav-element" class="signup-button" href="/n-profile/{{user._id}}"> My Profile</a> <!-- /n-profile/{{_id}}-->
             </li>
          {{/eq}}  
          
