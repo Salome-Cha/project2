@@ -85,11 +85,11 @@ router.post('/signup', (req, res) =>{
         .then ((user) => {
           console.log("A needer was created")
           req.session.currentUser = user;
+          req.app.locals.loggedUser = req.session.currentUser;
           res.redirect('/h-map');  // need to pass the user when we change for the map {user: req.session.currentUser}
         })
         .catch ((err) => console.log("An error occured while creating a needer:", err))
     }
-
 
   })
 
@@ -118,6 +118,7 @@ router.post('/login', (req, res) => {
         //login sucess
         req.session.currentUser = user;
         req.app.locals.loggedUser = req.session.currentUser;
+        // console.log("currentuser", req.session.currentUser);
         res.redirect('/h-map')
       } else {
         //pass dont match

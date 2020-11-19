@@ -29,8 +29,8 @@ router.get('/signup', (req, res) =>{
 router.get('/services', (req, res) =>{
   res.render('main/offer');
 })
-router.get('/blog', (req, res) =>{
-  res.render('main/blog');
+router.get('/help-hub', (req, res) =>{
+  res.render('main/help-hub');
 })
 
 module.exports = router;

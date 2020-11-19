@@ -9,23 +9,23 @@
         <div class="map-filters">
             <label>
             Food
-            <input type="radio" value="food" onclick="setFilterNeedType(this)"  name="filterNeedType"  class="radio-button radio-button-food" >
+            <input type="radio" value="food" onclick="setFilterNeedType(this)"  name="filterNeedType"  class="switch-button radio-button radio-button-food" >
             </label>
 
             <label>
-            Healthcare<input type="radio" value="healthcare" onclick="setFilterNeedType(this)" name="filterNeedType"  class="radio-button radio-button-healthcare" >
+            Healthcare<input type="radio" value="healthcare" onclick="setFilterNeedType(this)" name="filterNeedType"  class="switch-button radio-button radio-button-healthcare" >
             </label>
 
             <label>
-             Hosting <input type="radio" value="hosting" onclick="setFilterNeedType(this)" name="filterNeedType"  class="radio-button radio-button-hosting" >
+             Hosting <input type="radio" value="hosting" onclick="setFilterNeedType(this)" name="filterNeedType"  class="switch-button radio-button radio-button-hosting" >
             </label>
 
             <label>
-            Administrative Help <input type="radio" onclick="setFilterNeedType(this)" value="administrative" name="filterNeedType"  class="radio-button radio-button-administrative" >
+            Administrative Help <input type="radio" onclick="setFilterNeedType(this)" value="administrative" name="filterNeedType"  class="switch-button radio-button radio-button-administrative" >
             </label>
 
             <label>
-            All  <input type="radio" value="all" onclick="setFilterNeedType(this)" name="filterNeedType" class="radio-button radio-button-all" >
+            All  <input type="radio" value="all" onclick="setFilterNeedType(this)" name="filterNeedType" class="switch-button 662radio-button radio-button-all" >
             </label>
         </div>
       </div>
@@ -35,25 +35,31 @@
 
     <div class="profile-suggestions" >
       <div>
-        <p class='label-preview'> Members nearby
+        <div id="needy-members-nearby"> <p class='label-preview' > Members nearby </p> </div>
+        <div id="needy-member-selected" style="display: none;"> <p class='label-preview'> Selected Profile Preview </p> </div>
         <div>
           {{#each needyUsersFromDB}}
-          <div class="snippet-preview">
+          <div id="{{_id}}" class="snippet-preview">
               <div>
                   <img class="preview-image" src="{{photo}}"> 
               </div>
-              <div>
+              <div id="snippet-activated" class="default">
                   <h5 class="h5-snippet"> {{userName}}</h5>
                   <p class="p-snippet"> Needs help for: {{needType.name}}</p>  
                   <a href="/n-profile/{{_id}}" class="snippet-see-profile"> See profile</a>
               </div>
+              <div id="{{_id}}-invisible-when-full-list" class="extented-snippet" style="display: none;">
+                <p class="p-snippet"> Description: {{description}} </p>
+                <a href="/h-map" class="grey-button-see-full-list"> See full Members list</a>
+              </div>
           </div>  
           {{/each}}
+    
         </div>
       </div> 
     </div>
 
-
+    
 {{!-- The map --}}
 <div style="width:1100px" class="helper-map-page-bloc" id="helperMap"></div>
 
@@ -106,17 +112,55 @@ function showMarkers() {
    }
 
    markers.forEach((marker) =>{
-     setMarker({ lat: marker.geocoding.lat, lng: marker.geocoding.lng})
+     setMarker({ lat: marker.geocoding.lat, lng: marker.geocoding.lng}, marker.needType, marker._id)
     });
  };
 
-function setMarker(marker) {
+function setMarker(marker, needType, id) {
+  let image = null;
+  switch(needType.name) {
+    case "healthcare":
+      image = "/images/marker-healthcare.png"
+    break;
+    case "food":
+      image = "/images/marker-food.png";
+      break;
+    case "administrative":
+      image = "/images/marker-administration.png";
+      break;
+    case "hosting":
+      image = "/images/marker-housing.png";
+      break;
+  }
   const googleMarker = new google.maps.Marker({
    position: marker,
-    map: helperMap
+   map: helperMap,
+   icon: image,
+   id: id
+  });
+
+  googleMarker.addListener("click", () => {
+    allPreviews = document.getElementsByClassName("snippet-preview");
+    allPreviewsArr = [...allPreviews];
+    allPreviewsArr.forEach((preview) => {
+      preview.style.display = "none";
+    });
+    document.getElementById(googleMarker.id).style.display = "flex";
+    document.getElementById(googleMarker.id).classList.remove("snippet-preview");
+    document.getElementById(googleMarker.id).classList.add("single-snippet-preview");
+    //document.getElementById(googleMarker.id).style.backgroundColor = "red";
+    document.getElementById(`${googleMarker.id}-invisible-when-full-list`).style.display = "flex";
+    document.getElementById(`${googleMarker.id}-needy-members-nearby`).style.display = "none";
+    document.getElementById(`${googleMarker.id}-needy-member-selected`).style.display = "none";
+    
+    document.getElementById(`${googleMarker.id}-snippet-activated`).classList.remove("default");
+    document.getElementById(`${googleMarker.id}-snippet-activated`).classList.add("snippet-activated");
+
   });
   googleMarkers.push(googleMarker);
  };
+
+
 
   function getCurrentLocation() {
     navigator.geolocation.getCurrentPosition((position) =>{

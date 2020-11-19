@@ -47,7 +47,7 @@
 
       <div  class="segment-nav"> 
             <li class="nav-item right">
-              <a id="nav-element" class="nav-link" href="/blog">Blog</a>
+              <a id="nav-element" class="nav-link" href="/help-hub">Help Hub</a>
             </li>
             {{#if (not user)}}
             <li class="nav-item right">
@@ -64,11 +64,11 @@
 
          {{#eq user.userType 'helper'}} 
              <li class="nav-item right">
-               <a id="nav-element" class="signup-button" href="/my-h-profile/{{user._id}}"> My Profile</a>
+               <a id="nav-element" class="signup-button" href="/my-h-profile/{{loggedUser._id}}"> My Profile</a>
             </li>
             {{else}}  
             <li class="nav-item right">
-              <a id="nav-element" class="signup-button" href="/my-n-profile/{{user._id}}"> My Profile</a>
+              <a id="nav-element" class="signup-button" href="/my-n-profile/{{loggedUser._id}}"> My Profile</a>
             </li>
           {{/eq}} 
             {{/if}}
@@ -106,7 +106,7 @@
 
       <div  class="segment-nav"> 
             <li class="nav-item right">
-              <a id="nav-element" class="nav-link" href="/blog">Blog</a>
+              <a id="nav-element" class="nav-link" href="/help-hub">Help Hub</a>
             </li>
             {{#if (not user)}}
             <li class="nav-item right">
@@ -178,7 +178,7 @@
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <p class="text-uppercase">
-          <a href="/blog" class="footer-link">Blog</a>
+          <a href="/blog" class="footer-link">Help Hub</a>
         </p>
       </div>
       <!-- Grid column -->

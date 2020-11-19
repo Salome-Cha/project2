@@ -17,6 +17,7 @@ router.get('/h-map', (req, res) =>{
   .then ((needyUsersFromDB) => {
     let needyUsersFromDBString = JSON.stringify(needyUsersFromDB);
     let userStr = JSON.stringify(req.session.currentUser);
+    console.log("userstr", userStr);
     res.render('map/helper-map', {user: userStr, needyUsersFromDB: needyUsersFromDB, markers: needyUsersFromDBString}); // map shall render also the object: helperNearby:
   })
   .catch((err) => console.log("Error:", err))    
