@@ -117,6 +117,7 @@ router.post('/login', (req, res) => {
       if(bcrypt.compareSync(password, user.password)) {
         //login sucess
         req.session.currentUser = user;
+        req.app.locals.loggedUser = req.session.currentUser;
         res.redirect('/h-map')
       } else {
         //pass dont match
@@ -129,6 +130,7 @@ router.post('/login', (req, res) => {
 // LOGOUT
 router.post('/logout', (req, res) =>{
   req.session.destroy();
+  req.app.locals.loggedUser = null;
   res.redirect('/');
 })
 

@@ -18,15 +18,15 @@ function requireLogin(req, res, next) {  // we create a middleware function, to 
   }
 }
 
+// MY PROFILE HELPER
+// create a private route for users logged to see their account.
+router.get('/my-h-profile/:myUserId', (req, res) =>{
+  let myUserId = req.params.myUserId;
 
-// create a private route for users logged to see the account.
-
-router.get('/h-profile/:userId', (req, res) =>{
-  let userId = req.params.userId;
-  User.findById(userId)
+  User.findById(myUserId)
   .populate('serviceType')
-  .then((thisUser) => {
-    res.render('main/helper-profile', {user: thisUser})
+  .then((me) => {
+    res.render('main/helper-profile', {user: me})
   })
   .catch((err) => {
     res.render('error', {err}) 
@@ -34,20 +34,60 @@ router.get('/h-profile/:userId', (req, res) =>{
 })
 
 
-router.get('/n-profile/:userId', (req, res) =>{
-  let userId = req.params.userId;
-  User.findById(userId)
+
+// MY PROFILE NEEDY
+router.get('/my-n-profile/:myUserId', (req, res) =>{
+  let myUserId = req.params.myUserId;
+
+  User.findById(myUserId)
+  .populate('needType')
+  .then((me) => {
+    res.render('main/needy-profile', {user: me})
+  })
+  .catch((err) => {
+    res.render('error', {err}) 
+  })
+})
+
+//---------- EDIT THE PROFILE -------------
+
+
+
+
+
+
+
+
+
+
+// ACCESS HELPERS PROFILES FROM THE MAP OR THE FAIR
+// create a private route for users logged to see their account.
+router.get('/h-profile/:otherUserId', (req, res) =>{
+  let otherUserId = req.params.otherUserId;
+  User.findById(otherUserId)
+  .populate('serviceType')
+  .then((thisUser) => {
+    res.render('main/other-helper-profile', {otherUser: thisUser})
+  })
+  .catch((err) => {
+    res.render('error', {err}) 
+  })
+})
+
+
+// ACCESS NEEDY PROFILES FROM THE MAP OR THE FAIR
+// create a private route for users logged to see their account.
+router.get('/n-profile/:otherUserId', (req, res) =>{
+  let otherUserId = req.params.otherUserId;
+  User.findById(otherUserId)
   .populate('inNeedType')
   .then((thisUser) => {
-    res.render('main/needy-profile', {user: thisUser})
+    res.render('main/other-needy-profile', {otherUser: thisUser})
   })
   .catch((err) => {
     res.render('error', {err}) 
   })
 });
-
-//---------- EDIT THE PROFILE -------------
-
 
 
 module.exports = router;

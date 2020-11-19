@@ -1,0 +1,33 @@
+<div class="global-body-margin-top">
+
+<div class="specific-profile-container">
+
+<div>
+<h4> {{otherUser.userName}}'s' Profile</h4>
+
+  <div class="profile-photo">
+      <img class="user-photo" src="{{photo}}">
+  </div>
+
+  <div class="identity">
+     Username: {{otherUser.userName}}
+      First Name:  {{otherUser.firstName}}
+      Last Name:  {{otherUser.lastName}}
+      City: {{otherUser.city}}
+</div>
+
+<div class="profile-type">
+Type of help needed: {{otherUser.needType.name}}
+</div>
+
+<div class="contact">
+  <h4> Contact</h4>
+  Contact quickly{{otherUser.firstName}} to support her/him. Don't wait, he/she really needs your help <i class="fas fa-heart"></i><i class="fas fa-heart"></i> <i class="fas fa-heart"></i> ! <br>
+<address>
+  <a href="mailto:ironhack@ironhack.com">{{otherUser.email}}</a>
+</address>
+</div>
+
+</div>
+</div>
+</div>

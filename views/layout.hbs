@@ -64,11 +64,11 @@
 
          {{#eq user.userType 'helper'}} 
              <li class="nav-item right">
-               <a id="nav-element" class="signup-button" href="/h-profile/{{_id}}"> My Profile</a>
+               <a id="nav-element" class="signup-button" href="/my-h-profile/{{user._id}}"> My Profile</a>
             </li>
-            {{else}}
+            {{else}}  
             <li class="nav-item right">
-              <a id="nav-element" class="signup-button" href="/n-profile/{{_id}}"> My Profile</a>
+              <a id="nav-element" class="signup-button" href="/my-n-profile/{{user._id}}"> My Profile</a>
             </li>
           {{/eq}} 
             {{/if}}
@@ -120,14 +120,14 @@
              <form method="POST" action="/logout">
             <button type="submit" class="signup-button logout-button"> Logout </button>
             </form>
-            
-           {{#eq user.userType 'helper'}}
+
+           {{#eq loggedUser.userType 'helper'}}
             <li class="nav-item right">
-              <a id="nav-element" class="signup-button" href="/h-profile/{{_id}}"> My Profile</a>
+              <a id="nav-element" class="signup-button" href="/my-h-profile/{{loggedUser._id}}"> My Profile</a>
             </li>
             {{else}}
             <li class="nav-item right">
-              <a id="nav-element" class="signup-button" href="/n-profile/{{_id}}"> My Profile</a>
+              <a id="nav-element" class="signup-button" href="/my-n-profile/{{loggedUser._id}}"> My Profile</a>
             </li>
          {{/eq}}  
          

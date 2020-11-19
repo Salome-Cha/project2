@@ -72,8 +72,10 @@
 
 
 
-      <div id="divHelperSection" style="display: none;">   
-        <h5 class='form-typeh5'> You want to provide: </h5>
+      <div id="divHelperSection"  class="div-grouping-section" style="display: none;">   
+        
+          <h5 class='form-typeh5'> You want to provide: </h5>
+          <div class="form-elements-grouping-2">
             <label>
               <input type="radio" value="food"  name="helpType" id="food-helper">
                Food  
@@ -83,21 +85,25 @@
               <input type="radio" value="healthcare" name="helpType" id="healthcare-helper" >
             Healthcare
             </label>
-
+  
             <label>
               <input type="radio" value="hosting" name="helpType" id="hosting-helper" >
             Hosting
             </label>
-
+        
             <label>
               <input type="radio" value="administrative" name="helpType" id="administrative-helper" >
-             Administrative help
+             Administration
             </label>
+        </div>
+
       </div>
 
 
-      <div id="divNeedySection" style="display: none;">   
+      <div id="divNeedySection" class="div-grouping-section" style="display: none;">   
         <h5 class='form-typeh5'> You need help for: </h5>
+
+        <div class="form-elements-grouping-2">
             <label>
               <input type="radio" value="food"  name="needType" id="food-needer">
              Food  
@@ -107,21 +113,22 @@
               <input type="radio" value="healthcare" name="needType" id="healthcare-needer" >
               Healthcare
             </label>
-
+       
             <label>
               <input type="radio" value="hosting" name="needType" id="hosting-needer" >
               Hosting
             </label>
-
+     
             <label>
               <input type="radio" value="administrative" name="needType" id="administrative-needer" >
-              Administrative help
+              Administration
             </label>
+        </div>
       </div>
+ 
 
-
-      <div >
-            Please precise:
+      <div id="divHelperSection2" style="display: none;">
+          <h5 class='form-typeh5'> Please precise: </h5>
               <select id="subServiceSelect" name="subServices">
                 <div id="signup-medical-options" style="display: ,;">
                     <option value="doctor">Doctor</option>
@@ -175,9 +182,11 @@
   function checkUserType() {
     if (document.getElementById("radioHelper").checked) {
        document.getElementById("divHelperSection").style.display = "flex";
+       document.getElementById("divHelperSection2").style.display = "flex";
        document.getElementById("divNeedySection").style.display = "none";
     } else if (document.getElementById("radioNeedy").checked) {
         document.getElementById("divHelperSection").style.display = "none";
+        document.getElementById("divHelperSection2").style.display = "none";
        document.getElementById("divNeedySection").style.display = "flex";
     }
 
