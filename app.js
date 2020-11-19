@@ -48,7 +48,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(
   session({
     secret: 'mysecret',
-    cookie: {maxAge: 1200000},
+    cookie: {maxAge: 1200000},  // 1200000
     rolling: true,
     store: new MongoStore ({ // store every session information in mongo
       mongooseConnection: mongoose.connection,
@@ -62,6 +62,7 @@ app.use(
 // default value for title local
 app.locals.title = 'Symbiosis';
 app.locals.gmapKey = process.env.GOOGLE_MAPS_API_KEY;
+// app.locals.mapId = process.env.MAP_ID;
 
 
 
