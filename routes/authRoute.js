@@ -79,6 +79,7 @@ router.post('/signup', (req, res) =>{
    
         NeedType.find({name: needType })
         .then((response) => { 
+          console.log(response, 'need type');
           let needId = response[0]._id
           return User.create({firstName, lastName, userName, email, password: hashPassword, address, postCode, city, country, geocoding, userType, needType: needId})
         })

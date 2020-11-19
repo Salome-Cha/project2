@@ -79,9 +79,9 @@ router.post('/my-n-profile/:myId/edit',fileUpload.single('photo'), (req, res) =>
 }); 
 
 router.get('/my-h-profile/:myUserId/edit', (req, res) => {
-  let userId = req.params.userId;
+  let userId = req.params.myUserId;
   User.findById(userId)
-    .populate('inNeedType')
+    .populate('serviceType')
       .then((thisUser) =>{
         res.render('main/edit-helper-profile', {user: thisUser})
        })
