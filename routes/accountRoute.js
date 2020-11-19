@@ -6,7 +6,7 @@ const User = require('../models/User');
 const NeedType = require('../models/NeedType');
 const HelpType = require('../models/HelpType');
 const session = require('express-session')
-
+const fileUpload = require('../configs/cloudinary');
 
 //---------- RENDER THE PROFILE FROM THE CONTENT OF THE DATABASE-------------
 
@@ -38,7 +38,7 @@ router.get('/my-h-profile/:myUserId', (req, res) =>{
 // MY PROFILE NEEDY
 router.get('/my-n-profile/:myUserId', (req, res) =>{
   let myUserId = req.params.myUserId;
-
+  console.log('my id is', myUserId)
   User.findById(myUserId)
   .populate('needType')
   .then((me) => {
@@ -51,9 +51,9 @@ router.get('/my-n-profile/:myUserId', (req, res) =>{
 
 //---------- EDIT THE PROFILE -------------
 
-router.get('/n-profile/{{loggedUser._id}}/edit', (req, res) => {
-  let userId = req.params.userId;
-  User.findById(userId)
+router.get('/my-n-profile/:myId/edit', (req, res) => {
+  let myEditingId = req.params.myId;
+  User.findById(myEditingId)
     .populate('inNeedType')
       .then((thisUser) =>{
         res.render('main/edit-needy-profile', {user: thisUser})
@@ -62,6 +62,48 @@ router.get('/n-profile/{{loggedUser._id}}/edit', (req, res) => {
         res.render('error', {err})
       })
 });
+router.post('/my-n-profile/:myId/edit',fileUpload.single('photo'), (req, res) =>{
+  let myEditedId = req.params.myId;
+  let {firstName, lastName, address, postCode, description} = req.body;
+  let fileUrlOnCloudinary = req.session.currentUser.photo;
+  if(req.file) {
+    fileUrlOnCloudinary = req.file.path;
+  }
+  User.findByIdAndUpdate(myEditedId,{firstName, lastName, address, postCode, description, photo:fileUrlOnCloudinary}, {new: true})
+  .then((user)=>{
+    res.redirect(`/my-n-profile/${user._id}`)
+  })
+  .catch((err) => {
+    res.render('error', {err})
+  });
+}); 
+
+router.get('/my-h-profile/:myUserId/edit', (req, res) => {
+  let userId = req.params.userId;
+  User.findById(userId)
+    .populate('inNeedType')
+      .then((thisUser) =>{
+        res.render('main/edit-helper-profile', {user: thisUser})
+       })
+       .catch((err) => {
+        res.render('error', {err})
+      })
+});
+router.post('/my-h-profile/:myId/edit',fileUpload.single('photo'), (req, res) =>{
+  let myEditedId = req.params.myId;
+  let {firstName, lastName, address, postCode, description} = req.body;
+  let fileUrlOnCloudinary = req.session.currentUser.photo;
+  if(req.file) {
+    fileUrlOnCloudinary = req.file.path;
+  }
+  User.findByIdAndUpdate(myEditedId,{firstName, lastName, address, postCode, description, photo:fileUrlOnCloudinary}, {new: true})
+  .then((user)=>{
+    res.redirect(`/my-h-profile/${user._id}`)
+  })
+  .catch((err) => {
+    res.render('error', {err})
+  });
+}); 
 
 
 
@@ -82,7 +124,7 @@ router.get('/h-profile/:otherUserId', (req, res) =>{
   .catch((err) => {
     res.render('error', {err}) 
   })
-})
+});
 
 
 // ACCESS NEEDY PROFILES FROM THE MAP OR THE FAIR
