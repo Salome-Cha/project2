@@ -1,5 +1,32 @@
 <div class="global-body-margin-top">
   <h1>Edit inNeed</h1>
-  
-  
+      <h2>Editing {{user.userName}}</h2>
+      <br>
+  <form action="/my-n-profile/{{user.id}}/edit" method="POST" enctype="multipart/form-data">
+    <label for="firstName">First Name
+        <input type="text" name="firstName" value="{{user.firstName}}">
+    </label>
+    <label for="lastName">Last Name
+        <input type="text" name="lastName" value="{{user.lastName}}">
+    </label>
+<br>
+    <label for="address">Address
+        <input type="text" name="address" value="{{user.address}}">
+    </label>
+    <label for="postCode">Post Code
+        <input type="text" name="postCode" value="{{user.postCode}}">
+    </label>
+    <br>
+
+
+    <label for="description">
+      Description:
+      <textarea name="description" cols="30" rows="4">{{user.description}}</textarea>
+    </label>
+
+    <label for="image-input">Change Photo</label>
+    <input type="file" id="image-input" name="photo" class="form-control"></textarea>
+<br>
+    <button type="submit">Update</button>
+</form>
 </div>
