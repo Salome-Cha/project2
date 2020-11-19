@@ -49,7 +49,7 @@
             <li class="nav-item right">
               <a id="nav-element" class="nav-link" href="/blog">Blog</a>
             </li>
-            {{#if user}}
+            {{#if (not user)}}
             <li class="nav-item right">
               <a id="nav-element" class="nav-link" href="/login">Login</a>
             </li>
@@ -58,12 +58,11 @@
             </li>
             {{else}}
 
+            <form method="POST" action="/logout">
+            <button type="submit" class="signup-button logout-button"> Logout </button>
+            </form>
 
-            
          {{#eq user.userType 'helper'}} 
-            <li class="nav-item right">
-         
-             </li>
              <li class="nav-item right">
                <a id="nav-element" class="signup-button" href="/h-profile/{{_id}}"> My Profile</a>
             </li>
@@ -109,7 +108,7 @@
             <li class="nav-item right">
               <a id="nav-element" class="nav-link" href="/blog">Blog</a>
             </li>
-            {{#unless user}}
+            {{#if (not user)}}
             <li class="nav-item right">
               <a id="nav-element" class="nav-link" href="/login">Login</a>
             </li>
@@ -117,17 +116,14 @@
               <a id="nav-element" class="signup-button" href="/signup"> Signup</a>
             </li>
             {{else}}
+
              <form method="POST" action="/logout">
-            <button type="submit" class="signup-button"> Logout </button>
+            <button type="submit" class="signup-button logout-button"> Logout </button>
             </form>
             
            {{#eq user.userType 'helper'}}
             <li class="nav-item right">
-
-            <form method="POST" action="/logout">
-            <button type="submit" class="signup-button"> Logout </button>
-            </form>
-              <a id="nav-element" class="signup-button" href="/h-profile"> My Profile</a>
+              <a id="nav-element" class="signup-button" href="/h-profile/{{_id}}"> My Profile</a>
             </li>
             {{else}}
             <li class="nav-item right">
@@ -135,7 +131,7 @@
             </li>
          {{/eq}}  
          
-             {{/unless}}
+             {{/if}}
       </div>       
         </div>
       </ul>

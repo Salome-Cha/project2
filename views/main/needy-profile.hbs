@@ -1,20 +1,37 @@
 <div class="global-body-margin-top">
 
-
-<h1>Profile</h1>
+<div class="specific-profile-container">
 
 <div>
-Username: {{user.userName}}
-First Name:  {{user.firstName}}
-Last Name:  {{user.lastName}}
-Type of service provided: {{serviceType.name}}
+<h4>Profile</h4>
 
-Address: {{firstName}}
-Post Code: {{postCode}}
-City: {{city}}
+  <div class="profile-photo">
+      <img class="user-photo" src="{{photo}}">
+  </div>
+
+  <div class="identity">
+     Username: {{userName}}
+      First Name:  {{firstName}}
+      Last Name:  {{lastName}}
+      City: {{city}}
+</div>
+
+<div class="profile-type">
+Type of help needed: {{needType.name}}
+</div>
+
+<div class="contact">
+  Contact quickly{{firstName}} to support him. Don't wait, he really needs you <i class="fas fa-heart"></i><i class="fas fa-heart"></i> <i class="fas fa-heart"></i> ! <br>
+<address>
+  <a href="mailto:ironhack@ironhack.com"></a>
+</address>
+</div>
 
 
-<a href="/helper-profile/edit"> Edit my profile </a>
 
+<a class="submit-button" href="/helper-profile/edit"> Edit my profile </a>
+
+
+</div>
 </div>
 </div>

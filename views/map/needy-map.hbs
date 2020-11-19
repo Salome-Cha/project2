@@ -1,13 +1,11 @@
 <div class="global-body-margin-top">
 
-<container class="container-fluid map-view">
-
-<div>
+<div class='title-map-container'>
 <h4 class="map-title">Find people from the community to support you</h4>
 </div>
 
-<div id="filtersSection">   
-        <h6 class='filters-group container'> Filter: </h6>
+
+<div class="filtersSection">  
         <div class="map-filters">
             <label>
             Food
@@ -33,33 +31,38 @@
       </div>
 </div>
 
-<div class="container">
-  <div class="raw global-map-group container">
+<div class="container-fluid global-map-group">
 
-      <div class="profile-suggestions">
+    <div class="profile-suggestions" >
+      <div>
+        <p class='label-preview'> Members nearby
         <div>
-          Members nearby:
-          <div>
-            {{#each needyUsersFromDB}}
-            <div class="snippet-preview">
-                <!-- <img class="preview-image" src="{{image}}"> -->
-                <h5> {{userName}}</h5>
-                <p> Needs help for: {{userName}}</p>  
-                <a href="/n-profile/{{_id}}"> See more</a>
-            </div>  
-            {{/each}}
-          </div>
-        </div> 
-      </div>
+          {{#each helpersUsersFromDB}}
+          <div class="snippet-preview">
+              <div>
+                  <img class="preview-image" src="{{photo}}"> 
+              </div>
+              <div>
+                  <h5 class="h5-snippet"> {{userName}}</h5>
+                  <p class="p-snippet"> Provide help for: {{serviceType.name}}</p>  
+                  <a href="/n-profile/{{_id}}" class="snippet-see-profile"> See profile</a>
+              </div>
+          </div>  
+          {{/each}}
+        </div>
+      </div> 
+    </div>
 
-    <div class="helper-map-page-bloc"></div>
-  </div>
+
+{{!-- The map --}}
+<div style="width:1100px" class="helper-map-page-bloc" id="needyMap"></div>
+
 </div>
 
 
 <input type="hidden" id="userInput" value="{{user}}">
 <input type="hidden" id="allMarkers" value="{{markers}}">
-<div style="width:800px" id="helperMap"></div>
+
 
 
 
@@ -70,17 +73,19 @@
 <script>
  
 
-//Helper Map Initiation
+//Needy Map Initiation
 let filter;
-let helperMap;
+let needyMap;
 let geocoder;
 let googleMarkers = [];
+
 //const infowindow = new google.maps.InfoWindow();
+
 function initMap() {
   geocoder = new google.maps.Geocoder();
    let currentUser = JSON.parse(document.getElementById("userInput").value);
- 
-  helperMap = new google.maps.Map(document.getElementById('helperMap'), {
+
+  needyMap = new google.maps.Map(document.getElementById('needyMap'), {
     zoom: 17,
     center: {lat: currentUser.geocoding.lat, lng: currentUser.geocoding.lng}
   })
@@ -90,7 +95,6 @@ function initMap() {
 function showMarkers() {  
    let markers = JSON.parse(document.getElementById("allMarkers").value);
    console.log("markers", markers);
-
    console.log("filter", filter);
 
    if (filter && filter !== "all") {
@@ -100,8 +104,6 @@ function showMarkers() {
      });
    }
 
-   // add some filters based on the radio buttons checked.
-  
    markers.forEach((marker) =>{
      setMarker({ lat: marker.geocoding.lat, lng: marker.geocoding.lng})
     });
@@ -110,7 +112,7 @@ function showMarkers() {
 function setMarker(marker) {
   const googleMarker = new google.maps.Marker({
    position: marker,
-    map: helperMap
+    map: needyMap
   });
   googleMarkers.push(googleMarker);
  };
@@ -121,8 +123,8 @@ function setMarker(marker) {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       }
- //     console.log(pos, 'this is my position')
-      helperMap = new google.maps.Map(document.getElementById('helperMap'), {
+
+      needyMap = new google.maps.Map(document.getElementById('needyMap'), {
       zoom: 13,
       center: pos
      })
@@ -161,5 +163,3 @@ setTimeout(()=> {
 },1000)
 
 </script>
-
-</container>
