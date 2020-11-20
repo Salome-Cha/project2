@@ -121,7 +121,8 @@ router.post('/login', (req, res) => {
         req.session.currentUser = user;
         req.app.locals.loggedUser = req.session.currentUser;
         // console.log("currentuser", req.session.currentUser);
-        res.redirect('/h-map')
+        if (user.userType === "helper") {res.redirect('/h-map')}
+        else {res.redirect('/n-map')}
       } else {
         //pass dont match
         res.render('auth/login', {errorMessage: 'Invalid Login Password'});
