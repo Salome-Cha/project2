@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const User = require('../models/User');
+const User = require('../models/userModel');
 
 function requireLogin(req, res, next) {  // we create a middleware function, to pass it in the route.
   if (req.session.currentUser) {   // If this exists, means we are authenticated.
