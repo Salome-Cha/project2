@@ -57,7 +57,7 @@ router.post('/signup', (req, res) =>{
           }).then ((user) => {
           console.log("A helper was created")
           req.session.currentUser = user;
-          res.redirect('/') // need to pass the user when we change for the map {user: req.session.currentUser}
+          res.redirect('/h-map') // need to pass the user when we change for the map {user: req.session.currentUser}
         })
           .catch ((err) => console.log("An error occured while creating a helper:", err))
     } else {
@@ -87,7 +87,7 @@ router.post('/signup', (req, res) =>{
           console.log("A needer was created")
           req.session.currentUser = user;
           req.app.locals.loggedUser = req.session.currentUser;
-          res.redirect('/h-map');  // need to pass the user when we change for the map {user: req.session.currentUser}
+          res.redirect('/h-map');  // need to change to n-map but it is empty
         })
         .catch ((err) => console.log("An error occured while creating a needer:", err))
     }

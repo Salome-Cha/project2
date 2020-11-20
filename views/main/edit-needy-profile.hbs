@@ -1,32 +1,41 @@
 <div class="global-body-margin-top">
-  <h1>Edit inNeed</h1>
-      <h2>Editing {{user.userName}}</h2>
-      <br>
-  <form action="/my-n-profile/{{user.id}}/edit" method="POST" enctype="multipart/form-data">
-    <label for="firstName">First Name
-        <input type="text" name="firstName" value="{{user.firstName}}">
-    </label>
-    <label for="lastName">Last Name
-        <input type="text" name="lastName" value="{{user.lastName}}">
-    </label>
-<br>
-    <label for="address">Address
-        <input type="text" name="address" value="{{user.address}}">
-    </label>
-    <label for="postCode">Post Code
-        <input type="text" name="postCode" value="{{user.postCode}}">
-    </label>
-    <br>
+    <div class="row">
+    <div class="col-md-12 justify-content-center text-center">
+    
+              <h2>Editing {{user.userName}}</h2>
+          
+          <form action="/my-h-profile/{{user.id}}/edit" method="POST" enctype="multipart/form-data" class="justify-content-center edit-forms">
+      <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" name="firstName" value="{{user.firstName}}"  class="form-control" >
+            <label for="lastName">Last Name </label>
+            <input type="text" name="lastName" value="{{user.lastName}}"  class="form-control">       
+      </div>
+      <div class="form-group">
+            <label for="address">Address </label>
+                <input type="text" name="address" value="{{user.address}}"  class="form-control"> 
+      </div>
+      <div class="form-group">
+            <label for="postCode">Post Code</label>
+                <input type="text" name="postCode" value="{{user.postCode}}"  class="form-control">
+            
+      </div>
+      <div class="form-group">
+            <label for="description">Description:</label>
+              <textarea name="description" cols="30" rows="4"  class="form-control">{{user.description}}</textarea>
+              
+      </div>
+      <div class="form-group">
+            <label for="image-input">Change Photo</label>
+            <input type="file" id="image-input" name="photo" class="form-control"></textarea>
+      </div>
+
+        <br>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    
+    </div>
+</div>
 
 
-    <label for="description">
-      Description:
-      <textarea name="description" cols="30" rows="4">{{user.description}}</textarea>
-    </label>
-
-    <label for="image-input">Change Photo</label>
-    <input type="file" id="image-input" name="photo" class="form-control"></textarea>
-<br>
-    <button type="submit">Update</button>
-</form>
 </div>
