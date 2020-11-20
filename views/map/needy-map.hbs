@@ -112,11 +112,11 @@ function showMarkers() {
    }
 
    markers.forEach((marker) =>{
-     setMarker({ lat: marker.geocoding.lat, lng: marker.geocoding.lng}, marker.needType, marker._id)
+     setMarker({ lat: marker.geocoding.lat, lng: marker.geocoding.lng}, marker.serviceType, marker._id)
     });
  };
 
-function setMarker(marker, needType, id) {
+function setMarker(marker, serviceType, id) {
   let image = null;
   switch(serviceType.name) {
     case "healthcare":

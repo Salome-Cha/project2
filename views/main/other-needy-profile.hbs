@@ -5,7 +5,7 @@
 
 <div class='container global-profile-view'>
     <div class="col-sm-2 profile-photo">
-              <img class="user-photo" src="{{user.photo}}">
+              <img class="user-photo" src="{{otherUser.photo}}">
     </div>
 
 <div class="col-sm-6">
@@ -15,12 +15,12 @@
             <div class="identity-bloc">
               <h4 class='profile-title'> My Profile</h4>
               <ul>
-              <li>Username: {{user.userName}} </li>
-              <li>First Name:  {{user.firstName}} </li>
-              <li>Last Name:  {{user.lastName}} </li>
-              <li>City: {{user.city}} </li>
-             <li>Email: {{user.email}} </li>
-              <li>Type of help needed: {{user.needType.name}} </li>
+              <li>Username: {{otherUser.userName}} </li>
+              <li>First Name:  {{otherUser.firstName}} </li>
+              <li>Last Name:  {{otherUser.lastName}} </li>
+              <li>City: {{otherUser.city}} </li>
+             <li>Email: {{otherUser.email}} </li>
+              <li>Type of help needed: {{otherUser.needType.name}} </li>
              </ul>
             </div>
         </div>
@@ -31,7 +31,7 @@
 <div class="col-sm-4">
   <div class="bloc-description-link">
       <div>
-      Description: {{user.Description}}
+      Description: {{otherUser.description}}
       </div>
           <div class="contact">
       <h4 class='contact-type'> Contact: </h4>
