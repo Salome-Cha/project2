@@ -30,15 +30,16 @@
 
 <div class="col-sm-4">
   <div class="bloc-description-link">
-      <div>
-      Description: {{otherUser.Description}}
-      </div>
+        <div class="description-profile">
+        <h4 class='contact-type'>  Description: </h4>
+        <p class='description-profile-text'> {{otherUser.description}} </p>
+        </div>
       <div class="contact">
       <h4 class='contact-type'> Contact: </h4>
       <p class='contact-text'>
         Contact {{otherUser.firstName}} quickly, she/he will be happy to support you! <i class="fas fa-heart"></i><i class="fas fa-heart"></i> <i class="fas fa-heart"></i> <br>
       <address>
-        <a class="contact-mail" href="mailto:ironhack@ironhack.com">{{otherUser.email}}</a>
+        <a class="contact-mail" href="mailto:{{otherUser.email}}">{{otherUser.email}}</a>
       </address>
       </p>
       </div>

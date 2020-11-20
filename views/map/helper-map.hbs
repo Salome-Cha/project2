@@ -35,21 +35,21 @@
 
     <div class="profile-suggestions" >
       <div>
-        <div id="needy-members-nearby"> <p class='label-preview' > Members nearby </p> </div>
-        <div id="needy-member-selected" style="display: none;"> <p class='label-preview'> Selected Profile Preview </p> </div>
+        <div id="{{_id}}-needy-members-nearby"> <p class='label-preview' > Members nearby </p> </div>
+        <div id="{{_id}}-needy-member-selected" style="display: none;"> <p class='label-preview'> Selected Profile Preview </p> </div>
         <div>
           {{#each needyUsersFromDB}}
           <div id="{{_id}}" class="snippet-preview">
               <div>
-                  <img class="preview-image" src="{{photo}}"> 
+                  <img id="{{_id}}-preview-image-snippet" class="preview-image" src="{{photo}}"> 
               </div>
-              <div id="snippet-activated" class="default">
+              <div id="{{_id}}-snippet-activated" class="default">
                   <h5 class="h5-snippet"> {{userName}}</h5>
                   <p class="p-snippet"> Needs help for: {{needType.name}}</p>  
                   <a href="/n-profile/{{_id}}" class="snippet-see-profile"> See profile</a>
               </div>
               <div id="{{_id}}-invisible-when-full-list" class="extented-snippet" style="display: none;">
-                <p class="p-snippet"> Description: {{description}} </p>
+                <p class="p-snippet"> Description: <br> {{description}} </p>
                 <a href="/h-map" class="grey-button-see-full-list"> See full Members list</a>
               </div>
           </div>  
@@ -73,7 +73,7 @@
 
 
 <script
-      src="https://maps.googleapis.com/maps/api/js?key={{gmapKey}}&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key={{gmapKey}}&map_ids=7fb23118d6af4eaa&callback=initMap&libraries=&v=weekly"
       defer
     ></script>  
 <script>
@@ -93,8 +93,8 @@ function initMap() {
 
   helperMap = new google.maps.Map(document.getElementById('helperMap'), {
     zoom: 17,
-    center: {lat: currentUser.geocoding.lat, lng: currentUser.geocoding.lng}
-    {{!-- mapId: '7fb23118d6af4eaa' --}}
+    center: {lat: currentUser.geocoding.lat, lng: currentUser.geocoding.lng},
+    mapId: '7fb23118d6af4eaa' 
   })
 }
 
@@ -148,13 +148,17 @@ function setMarker(marker, needType, id) {
     document.getElementById(googleMarker.id).style.display = "flex";
     document.getElementById(googleMarker.id).classList.remove("snippet-preview");
     document.getElementById(googleMarker.id).classList.add("single-snippet-preview");
-    //document.getElementById(googleMarker.id).style.backgroundColor = "red";
+   
     document.getElementById(`${googleMarker.id}-invisible-when-full-list`).style.display = "flex";
-    document.getElementById(`${googleMarker.id}-needy-members-nearby`).style.display = "none";
-    document.getElementById(`${googleMarker.id}-needy-member-selected`).style.display = "none";
+    // document.getElementById(`${googleMarker.id}-needy-members-nearby`).style.display = "none";
+    // document.getElementById(`${googleMarker.id}-needy-member-selected`).style.display = "flex"; 
     
     document.getElementById(`${googleMarker.id}-snippet-activated`).classList.remove("default");
     document.getElementById(`${googleMarker.id}-snippet-activated`).classList.add("snippet-activated");
+    
+    document.getElementById(`${googleMarker.id}-preview-image-snippet`).classList.remove("preview-image-snippet");
+    document.getElementById(`${googleMarker.id}-preview-image-snippet`).classList.add("preview-image-snippet-activated");
+
 
   });
   googleMarkers.push(googleMarker);
