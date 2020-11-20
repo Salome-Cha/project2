@@ -73,7 +73,7 @@
 
 
 <script
-      src="https://maps.googleapis.com/maps/api/js?key={{gmapKey}}&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key={{gmapKey}}&map_ids=7fb23118d6af4eaa&callback=initMap&libraries=&v=weekly"
       defer
     ></script>  
 <script>
@@ -93,8 +93,8 @@ function initMap() {
 
   needyMap = new google.maps.Map(document.getElementById('needyMap'), {
     zoom: 17,
-    center: {lat: currentUser.geocoding.lat, lng: currentUser.geocoding.lng}
-    {{!-- mapId: '7fb23118d6af4eaa' --}}
+    center: {lat: currentUser.geocoding.lat, lng: currentUser.geocoding.lng},
+     mapId: '7fb23118d6af4eaa' 
   })
 }
 

@@ -128,7 +128,7 @@ router.get('/h-profile/:otherUserId', (req, res) =>{
 router.get('/n-profile/:otherUserId', (req, res) =>{
   let otherUserId = req.params.otherUserId;
   User.findById(otherUserId)
-  .populate('inNeedType')
+  .populate('needType')
   .then((thisUser) => {
     res.render('main/other-needy-profile', {otherUser: thisUser})
   })
