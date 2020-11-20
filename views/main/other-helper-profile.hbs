@@ -1,33 +1,54 @@
 <div class="global-body-margin-top">
 
+
 <div class="specific-profile-container">
 
-<div>
-<h4>{{otherUser.userName}}'s Profile</h4>
+<div class='container global-profile-view'>
+    <div class="col-sm-2 profile-photo">
+              <img class="user-photo" src="{{user.photo}}">
+    </div>
 
-  <div class="profile-photo">
-      <img class="user-photo" src="{{otherUser.photo}}">
+<div class="col-sm-6">
+    <div class="container identity-big-bloc">
+     
+        <div class="identity-container">
+            <div class="identity-bloc">
+              <h4 class='profile-title'> My Profile</h4>
+              <ul>
+              <li>Username: {{user.userName}} </li>
+              <li>First Name:  {{user.firstName}} </li>
+              <li>Last Name:  {{user.lastName}} </li>
+              <li>City: {{user.city}} </li>
+             <li>Email: {{user.email}} </li>
+              <li>Type of service provided: {{user.serviceType.name}} </li>
+             </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-sm-4">
+  <div class="bloc-description-link">
+      <div>
+      Description: {{user.Description}}
+      </div>
+      <div class="contact">
+      <h4 class='contact-type'> Contact: </h4>
+      <p class='contact-text'>
+        Contact {{otherUser.firstName}} quickly, she/he will be happy to support you! <i class="fas fa-heart"></i><i class="fas fa-heart"></i> <i class="fas fa-heart"></i> <br>
+      <address>
+        <a class="contact-mail" href="mailto:ironhack@ironhack.com">{{otherUser.email}}</a>
+      </address>
+      </p>
+      </div>
+
+
   </div>
-
-  <div class="identity">
-     Username: {{otherUser.userName}}
-      First Name:  {{otherUser.firstName}}
-      Last Name:  {{otherUser.lastName}}
-      City: {{otherUser.city}}
-</div>
-
-<div class="profile-type">
-Type of service provided: {{otherUser.serviceType.name}}
-</div>
-
-<div class="contact">
-   <h4> Contact</h4>
-  Contact {{otherUser.firstName}} quickly, she/he will be happy to support you <i class="fas fa-heart"></i><i class="fas fa-heart"></i> <i class="fas fa-heart"></i> ! <br>
-<address>
-  <a href="mailto:{{otherUser.email}}">{{otherUser.email}}</a> {{!-- ironhack@ironhack.com --}}
-</address>
 </div>
 
 </div>
 </div>
 </div>
+</div>
+

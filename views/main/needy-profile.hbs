@@ -1,8 +1,5 @@
 <div class="global-body-margin-top">
 
-<div class='title-bloc container'>
-<h4 class='profile-title'> My Profile</h4>
-</div>
 
 <div class="specific-profile-container">
 
@@ -16,13 +13,14 @@
      
         <div class="identity-container">
             <div class="identity-bloc">
+              <h4 class='profile-title'> My Profile</h4>
               <ul>
               <li>Username: {{user.userName}} </li>
               <li>First Name:  {{user.firstName}} </li>
               <li>Last Name:  {{user.lastName}} </li>
               <li>City: {{user.city}} </li>
              <li>Email: {{user.email}} </li>
-              <li>Type of service provided: {{user.serviceType.name}} </li>
+              <li>Type of help needed: {{user.needType.name}} </li>
              </ul>
             </div>
         </div>
@@ -35,13 +33,9 @@
       <div>
       Description: {{user.Description}}
       </div>
-      <a class="submit-button edit-pro-button" href="/my-h-profile/{{user._id}}/edit"> Edit my profile </a>
-
+      <a class="submit-button" href="/my-n-profile/{{user._id}}/edit"> Edit my profile </a>
   </div>
 </div>
-
-
-<a class="submit-button" href="/my-h-profile/{{user._id}}/edit"> Edit my profile </a>
 
 </div>
 </div>
